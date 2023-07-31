@@ -1,5 +1,15 @@
 # Embroider Changelog
 
+## Release (2023-07-31)
+
+
+
+#### :house: Internal
+* [#1](https://github.com/mansona/embroider/pull/1) Preview Release ([@github-actions[bot]](https://github.com/apps/github-actions))
+
+#### Committers: 1
+- [@github-actions[bot]](https://github.com/apps/github-actions)
+
 ## Release (2023-07-20)
 
 @embroider/addon-dev 3.2.0 (minor)
