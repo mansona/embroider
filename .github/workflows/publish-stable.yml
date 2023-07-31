@@ -27,7 +27,7 @@ jobs:
       # when the .release-plan.json file was changed on the last commit. This
       # plus the fact that this action only runs on main will be enough of a guard
       # I would prefer to use HEAD here but that doesn't work https://github.com/actions/checkout/issues/969
-      - run: git diff --name-only main main~1 | grep -w -q ".release-plan.json"
+      - run: git diff --name-only origin/main origin/main~1 | grep -w -q ".release-plan.json"
 
   publish:
     name: "NPM Publish"
