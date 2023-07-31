@@ -20,7 +20,7 @@ concurrency:
 jobs:
   check-plan:
     name: "Check Release Plan"
-    runs-on: ubunut-latest
+    runs-on: ubuntu-latest
 
     steps:
       # This will only cause the `check-plan` job to have a result of `success`
