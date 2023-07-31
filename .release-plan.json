@@ -2,7 +2,6 @@
   "solution": {
     "@real_ate/fake-embroider-addon-dev": {
       "impact": "minor",
-
       "oldVersion": "3.1.2",
       "newVersion": "3.2.0",
       "constraints": [
