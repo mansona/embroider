@@ -26,7 +26,8 @@ jobs:
       # This will only cause the `check-plan` job to have a result of `success`
       # when the .release-plan.json file was changed on the last commit. This
       # plus the fact that this action only runs on main will be enough of a guard
-      - run: git diff --name-only HEAD HEAD~1 | grep -w -q ".release-plan.json"
+      # I would prefer to use HEAD here but that doesn't work https://github.com/actions/checkout/issues/969
+      - run: git diff --name-only main main~1 | grep -w -q ".release-plan.json"
 
   publish:
     name: "NPM Publish"
