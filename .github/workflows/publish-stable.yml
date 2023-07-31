@@ -51,7 +51,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: npm publish
-        run: pnpm embroider-release publish
+        run: node ./test-packages/release/src/cli.js publish
         env:
           GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
