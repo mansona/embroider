@@ -367,7 +367,7 @@ export class Evaluator {
         return {
           confident: true,
           get value() {
-            throw new Error(`bug in @embroider/macros: didn't expect to need to evaluate this value`);
+            throw new Error(`bug in @real_ate/fake-embroider-macros: didn't expect to need to evaluate this value`);
           },
           hasRuntimeImplementation: true,
         };
@@ -381,22 +381,22 @@ export class Evaluator {
       return { confident: false };
     }
     let callee = path.get('callee');
-    if (callee.referencesImport('@embroider/macros', 'dependencySatisfies')) {
+    if (callee.referencesImport('@real_ate/fake-embroider-macros', 'dependencySatisfies')) {
       return { confident: true, value: dependencySatisfies(path, this.state), hasRuntimeImplementation: false };
     }
-    if (callee.referencesImport('@embroider/macros', 'moduleExists')) {
+    if (callee.referencesImport('@real_ate/fake-embroider-macros', 'moduleExists')) {
       return { confident: true, value: moduleExists(path, this.state), hasRuntimeImplementation: false };
     }
-    if (callee.referencesImport('@embroider/macros', 'getConfig')) {
+    if (callee.referencesImport('@real_ate/fake-embroider-macros', 'getConfig')) {
       return { confident: true, value: getConfig(path, this.state, 'package'), hasRuntimeImplementation: true };
     }
-    if (callee.referencesImport('@embroider/macros', 'getOwnConfig')) {
+    if (callee.referencesImport('@real_ate/fake-embroider-macros', 'getOwnConfig')) {
       return { confident: true, value: getConfig(path, this.state, 'own'), hasRuntimeImplementation: true };
     }
-    if (callee.referencesImport('@embroider/macros', 'getGlobalConfig')) {
+    if (callee.referencesImport('@real_ate/fake-embroider-macros', 'getGlobalConfig')) {
       return { confident: true, value: getConfig(path, this.state, 'getGlobalConfig'), hasRuntimeImplementation: true };
     }
-    if (callee.referencesImport('@embroider/macros', 'isDevelopingApp')) {
+    if (callee.referencesImport('@real_ate/fake-embroider-macros', 'isDevelopingApp')) {
       return {
         confident: true,
         value: Boolean(
@@ -406,16 +406,16 @@ export class Evaluator {
         hasRuntimeImplementation: false,
       };
     }
-    if (callee.referencesImport('@embroider/macros', 'isDevelopingThisPackage')) {
+    if (callee.referencesImport('@real_ate/fake-embroider-macros', 'isDevelopingThisPackage')) {
       return {
         confident: true,
         value: this.state.opts.isDevelopingPackageRoots.includes(this.state.originalOwningPackage().root),
         hasRuntimeImplementation: false,
       };
     }
-    if (callee.referencesImport('@embroider/macros', 'isTesting')) {
+    if (callee.referencesImport('@real_ate/fake-embroider-macros', 'isTesting')) {
       let g = getConfig(path, this.state, 'getGlobalConfig') as any;
-      let e = g && g['@embroider/macros'];
+      let e = g && g['@real_ate/fake-embroider-macros'];
       let value = Boolean(e && e.isTesting);
       return { confident: true, value, hasRuntimeImplementation: true };
     }

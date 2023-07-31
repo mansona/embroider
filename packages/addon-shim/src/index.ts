@@ -5,7 +5,7 @@ import {
   AddonInstance,
   isDeepAddonInstance,
   PackageInfo,
-} from '@embroider/shared-internals';
+} from '@real_ate/fake-embroider-shared-internals';
 import buildFunnel from 'broccoli-funnel';
 import type { Node } from 'broccoli-node-api';
 import { satisfies } from 'semver';

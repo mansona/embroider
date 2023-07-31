@@ -17,7 +17,7 @@ import {
   cacheBustingPluginPath,
   Resolver,
   locateEmbroiderWorkingDir,
-} from '@embroider/core';
+} from '@real_ate/fake-embroider-core';
 import walkSync from 'walk-sync';
 import { resolve as resolvePath, posix } from 'path';
 import { JSDOM } from 'jsdom';
@@ -36,20 +36,20 @@ import { outputJSONSync, readJSONSync, rmSync, statSync, unlinkSync, writeFileSy
 import type { Options as EtcOptions } from 'babel-plugin-ember-template-compilation';
 import type { Options as ResolverTransformOptions } from './resolver-transform';
 import type { Options as AdjustImportsOptions } from './babel-plugin-adjust-imports';
-import { PreparedEmberHTML } from '@embroider/core/src/ember-html';
-import { InMemoryAsset, OnDiskAsset, ImplicitAssetPaths } from '@embroider/core/src/asset';
-import { makePortable } from '@embroider/core/src/portable-babel-config';
-import { AppFiles, RouteFiles } from '@embroider/core/src/app-files';
-import { PortableHint, maybeNodeModuleVersion } from '@embroider/core/src/portable';
+import { PreparedEmberHTML } from '@real_ate/fake-embroider-core/src/ember-html';
+import { InMemoryAsset, OnDiskAsset, ImplicitAssetPaths } from '@real_ate/fake-embroider-core/src/asset';
+import { makePortable } from '@real_ate/fake-embroider-core/src/portable-babel-config';
+import { AppFiles, RouteFiles } from '@real_ate/fake-embroider-core/src/app-files';
+import { PortableHint, maybeNodeModuleVersion } from '@real_ate/fake-embroider-core/src/portable';
 import assertNever from 'assert-never';
 import { Memoize } from 'typescript-memoize';
 import { join, dirname } from 'path';
 import resolve from 'resolve';
 import { V1Config } from './v1-config';
-import { AddonMeta, Package, PackageInfo } from '@embroider/core';
+import { AddonMeta, Package, PackageInfo } from '@real_ate/fake-embroider-core';
 import { ensureDirSync, copySync, readdirSync, pathExistsSync } from 'fs-extra';
 import { TransformOptions } from '@babel/core';
-import { MacrosConfig } from '@embroider/macros/src/node';
+import { MacrosConfig } from '@real_ate/fake-embroider-macros/src/node';
 import SourceMapConcat from 'fast-sourcemap-concat';
 import escapeRegExp from 'escape-string-regexp';
 
@@ -272,7 +272,7 @@ export class CompatAppBuilder {
     };
 
     let config: CompatResolverOptions = {
-      // this part is the base ModuleResolverOptions as required by @embroider/core
+      // this part is the base ModuleResolverOptions as required by @real_ate/fake-embroider-core
       activeAddons,
       renameModules,
       renamePackages,
@@ -294,7 +294,7 @@ export class CompatAppBuilder {
       })),
       amdCompatibility: this.options.amdCompatibility,
 
-      // this is the additional stufff that @embroider/compat adds on top to do
+      // this is the additional stufff that @real_ate/fake-embroider-compat adds on top to do
       // global template resolving
       modulePrefix: this.modulePrefix(),
       podModulePrefix: this.podModulePrefix(),
@@ -371,13 +371,13 @@ export class CompatAppBuilder {
         }`,
       });
 
-      // whether or not anybody was actually using @embroider/macros
+      // whether or not anybody was actually using @real_ate/fake-embroider-macros
       // explicitly as an addon, we ensure its test-support file is always
       // present.
       if (!result.find(s => s.kind === 'on-disk' && s.sourcePath.endsWith('embroider-macros-test-support.js'))) {
         result.unshift({
           kind: 'on-disk',
-          sourcePath: require.resolve('@embroider/macros/src/vendor/embroider-macros-test-support'),
+          sourcePath: require.resolve('@real_ate/fake-embroider-macros/src/vendor/embroider-macros-test-support'),
           mtime: 0,
           size: 0,
           relativePath: 'embroider-macros-test-support.js',
@@ -430,7 +430,7 @@ export class CompatAppBuilder {
 
     babel.plugins.push([require.resolve('babel-plugin-ember-template-compilation'), this.etcOptions(resolverConfig)]);
 
-    // this is @embroider/macros configured for full stage3 resolution
+    // this is @real_ate/fake-embroider-macros configured for full stage3 resolution
     babel.plugins.push(...this.compatApp.macrosConfig.babelPluginConfig());
 
     let colocationOptions: TemplateColocationPluginOptions = {
@@ -636,7 +636,7 @@ export class CompatAppBuilder {
       }
       engine.addons.add(child);
     }
-    // ensure addons are applied in the correct order, if set (via @embroider/compat/v1-addon)
+    // ensure addons are applied in the correct order, if set (via @real_ate/fake-embroider-compat/v1-addon)
     if (!isChild) {
       engine.addons = new Set(
         [...engine.addons].sort((a, b) => {
@@ -693,7 +693,7 @@ export class CompatAppBuilder {
     | { packageJSON: PackageInfo; extraAppFiles: string[]; extraVendorFiles: string[] }
     | undefined {
     if (this.activeFastboot) {
-      // this is relying on work done in stage1 by @embroider/compat/src/compat-adapters/ember-cli-fastboot.ts
+      // this is relying on work done in stage1 by @real_ate/fake-embroider-compat/src/compat-adapters/ember-cli-fastboot.ts
       let packageJSON = readJSONSync(join(this.activeFastboot.root, '_fastboot_', 'package.json'));
       let { extraAppFiles, extraVendorFiles } = packageJSON['embroider-fastboot'];
       delete packageJSON['embroider-fastboot'];
@@ -833,7 +833,7 @@ export class CompatAppBuilder {
       baseDir: this.root,
     });
     if (process.env.EMBROIDER_CONCAT_STATS) {
-      let MeasureConcat = (await import('@embroider/core/src/measure-concat')).default;
+      let MeasureConcat = (await import('@real_ate/fake-embroider-core/src/measure-concat')).default;
       concat = new MeasureConcat(asset.relativePath, concat, this.root);
     }
     for (let source of asset.sources) {
@@ -1385,7 +1385,7 @@ function defaultAddonPackageRules(): PackageRules[] {
 }
 
 const entryTemplate = jsHandlebarsCompile(`
-import { importSync as i, macroCondition, getGlobalConfig } from '@embroider/macros';
+import { importSync as i, macroCondition, getGlobalConfig } from '@real_ate/fake-embroider-macros';
 let w = window;
 let d = w.define;
 
@@ -1472,13 +1472,13 @@ if (!runningTests) {
 }) => string;
 
 const routeEntryTemplate = jsHandlebarsCompile(`
-import { importSync as i } from '@embroider/macros';
+import { importSync as i } from '@real_ate/fake-embroider-macros';
 let d = window.define;
 {{#each files as |amdModule| ~}}
 d("{{js-string-escape amdModule.runtime}}", function(){ return i("{{js-string-escape amdModule.buildtime}}");});
 {{/each}}
 {{#if fastbootOnlyFiles}}
-  import { macroCondition, getGlobalConfig } from '@embroider/macros';
+  import { macroCondition, getGlobalConfig } from '@real_ate/fake-embroider-macros';
   if (macroCondition(getGlobalConfig().fastboot?.isRunning)) {
     {{#each fastbootOnlyFiles as |amdModule| ~}}
     d("{{js-string-escape amdModule.runtime}}", function(){ return i("{{js-string-escape amdModule.buildtime}}");});
@@ -1501,7 +1501,7 @@ function stringOrBufferEqual(a: string | Buffer, b: string | Buffer): boolean {
 }
 
 const babelFilterTemplate = jsHandlebarsCompile(`
-const { babelFilter } = require(${JSON.stringify(require.resolve('@embroider/core'))});
+const { babelFilter } = require(${JSON.stringify(require.resolve('@real_ate/fake-embroider-core'))});
 module.exports = babelFilter({{json-stringify skipBabel}}, "{{js-string-escape appRoot}}");
 `) as (params: { skipBabel: Options['skipBabel']; appRoot: string }) => string;
 

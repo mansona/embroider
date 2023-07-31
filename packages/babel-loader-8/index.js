@@ -1,4 +1,4 @@
-const { applyVariantToBabelConfig } = require('@embroider/core');
+const { applyVariantToBabelConfig } = require('@real_ate/fake-embroider-core');
 module.exports = require('babel-loader').custom(babel => {
   return {
     customOptions({ variant, appBabelConfigPath, ...extraOptions }) {

@@ -4,11 +4,11 @@ import QUnit from 'qunit';
 import { resolve, sep } from 'path';
 const { module: Qmodule, test } = QUnit;
 
-import { ExpectFile, expectRewrittenFilesAt } from '@embroider/test-support/file-assertions/qunit';
+import { ExpectFile, expectRewrittenFilesAt } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
 
-import { throwOnWarnings } from '@embroider/core';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
 import merge from 'lodash/merge';
-import { setupAuditTest } from '@embroider/test-support/audit-assertions';
+import { setupAuditTest } from '@real_ate/fake-embroider-test-support/audit-assertions';
 
 appScenarios
   .map('compat-renaming', app => {
@@ -237,12 +237,12 @@ appScenarios
         expectAudit
           .module('./components/import-somebody-elses-original.js')
           .resolves('somebody-elses-package')
-          .to(resolve('/@embroider/ext-cjs/somebody-elses-package').split(sep).join('/'));
+          .to(resolve('/@real_ate/fake-embroider-ext-cjs/somebody-elses-package').split(sep).join('/'));
 
         expectAudit
           .module('./components/import-somebody-elses-original.js')
           .resolves('somebody-elses-package/deeper')
-          .to(resolve('/@embroider/ext-cjs/somebody-elses-package/deeper').split(sep).join('/'));
+          .to(resolve('/@real_ate/fake-embroider-ext-cjs/somebody-elses-package/deeper').split(sep).join('/'));
       });
       test('single file package gets captured and renamed', function () {
         expectAudit

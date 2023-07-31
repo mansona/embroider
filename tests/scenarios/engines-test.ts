@@ -3,7 +3,7 @@ import { PreparedApp, Project } from 'scenario-tester';
 import QUnit from 'qunit';
 import merge from 'lodash/merge';
 import { setupFastboot, loadFromFixtureData } from './helpers';
-import { ExpectFile, expectFilesAt } from '@embroider/test-support/file-assertions/qunit';
+import { ExpectFile, expectFilesAt } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
 import { dirname, join } from 'path';
 import { readFileSync } from 'fs';
 
@@ -65,14 +65,14 @@ let engineScenarios = appScenarios.map('engines', project => {
   project.addDevDependency(lazyEngine);
 
   project.linkDependency('ember-truth-helpers', { baseDir: __dirname });
-  project.linkDependency('@embroider/macros', { baseDir: __dirname });
+  project.linkDependency('@real_ate/fake-embroider-macros', { baseDir: __dirname });
   project.addDependency(emberEngines());
   project.linkDependency('@ember/legacy-built-in-components', { baseDir: __dirname });
   eagerEngine.linkDependency('ember-truth-helpers', { baseDir: __dirname });
   eagerEngine.addDependency(emberEngines());
   lazyEngine.linkDependency('ember-truth-helpers', { baseDir: __dirname });
   lazyEngine.addDependency(emberEngines());
-  macroSampleAddon.linkDependency('@embroider/macros', { baseDir: __dirname });
+  macroSampleAddon.linkDependency('@real_ate/fake-embroider-macros', { baseDir: __dirname });
 
   let engineTestFiles = loadFromFixtureData('engines-host-app');
   merge(project.files, engineTestFiles);

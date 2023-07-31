@@ -1,4 +1,4 @@
-import { allBabelVersions } from '@embroider/test-support';
+import { allBabelVersions } from '@real_ate/fake-embroider-test-support';
 import { Evaluator, buildLiterals } from '../../src/babel/evaluate-json';
 import { NodePath } from '@babel/traverse';
 import type * as Babel from '@babel/core';
@@ -154,14 +154,14 @@ describe('hasRuntimeImplementation', function () {
 
       test('isTesting', () => {
         let code = transform(`
-        import { isTesting } from '@embroider/macros';
+        import { isTesting } from '@real_ate/fake-embroider-macros';
         const result = isTesting()`);
         expect(code).toMatch(`result = true`);
       });
 
       test('getConfig', () => {
         let code = transform(`
-        import { getConfig } from '@embroider/macros';
+        import { getConfig } from '@real_ate/fake-embroider-macros';
         const result = getConfig('foo')`);
         expect(code).toMatch(`result = true`);
       });
@@ -169,14 +169,14 @@ describe('hasRuntimeImplementation', function () {
       // this is throwing internally, not sure how to fix
       test.skip('getOwnConfig', () => {
         let code = transform(`
-        import { getOwnConfig } from '@embroider/macros';
+        import { getOwnConfig } from '@real_ate/fake-embroider-macros';
         const result = getOwnConfig()`);
         expect(code).toMatch(`result = true`);
       });
 
       test('getGlobalConfig', () => {
         let code = transform(`
-        import { getGlobalConfig } from '@embroider/macros';
+        import { getGlobalConfig } from '@real_ate/fake-embroider-macros';
         const result = getGlobalConfig()`);
         expect(code).toMatch(`result = true`);
       });
@@ -188,7 +188,7 @@ describe('hasRuntimeImplementation', function () {
 
       test('object with runtime', () => {
         let code = transform(`
-        import { isTesting } from '@embroider/macros';
+        import { isTesting } from '@real_ate/fake-embroider-macros';
         const result = { foo: isTesting() }`);
         expect(code).toMatch(`result = true`);
       });
@@ -200,7 +200,7 @@ describe('hasRuntimeImplementation', function () {
 
       test('array with runtime', () => {
         let code = transform(`
-        import { isTesting } from '@embroider/macros';
+        import { isTesting } from '@real_ate/fake-embroider-macros';
         const result = [1, isTesting(), 2]`);
         expect(code).toMatch(`result = true`);
       });
@@ -214,7 +214,7 @@ describe('hasRuntimeImplementation', function () {
 
       test('assignment with runtime', () => {
         let code = transform(`
-        import { isTesting } from '@embroider/macros';
+        import { isTesting } from '@real_ate/fake-embroider-macros';
         let foo;
         const result = foo = isTesting();`);
         expect(code).toMatch(`result = true`);
@@ -232,7 +232,7 @@ describe('hasRuntimeImplementation', function () {
 
       test('binary expression with runtime', () => {
         let code = transform(`
-        import { isTesting } from '@embroider/macros';
+        import { isTesting } from '@real_ate/fake-embroider-macros';
         const result = true === isTesting();`);
         expect(code).toMatch(`result = true`);
       });
@@ -244,7 +244,7 @@ describe('hasRuntimeImplementation', function () {
 
       test('logical expression with runtime', () => {
         let code = transform(`
-        import { isTesting } from '@embroider/macros';
+        import { isTesting } from '@real_ate/fake-embroider-macros';
         const result = true && isTesting();`);
         expect(code).toMatch(`result = true`);
       });
@@ -256,7 +256,7 @@ describe('hasRuntimeImplementation', function () {
 
       test('unary expression with runtime', () => {
         let code = transform(`
-        import { isTesting } from '@embroider/macros';
+        import { isTesting } from '@real_ate/fake-embroider-macros';
         const result = !isTesting();`);
         expect(code).toMatch(`result = true`);
       });
@@ -268,7 +268,7 @@ describe('hasRuntimeImplementation', function () {
 
       test('ternary expression with runtime', () => {
         let code = transform(`
-        import { isTesting } from '@embroider/macros';
+        import { isTesting } from '@real_ate/fake-embroider-macros';
         const result = true ? isTesting() : 2;`);
         expect(code).toMatch(`result = true`);
       });
@@ -285,7 +285,7 @@ describe('hasRuntimeImplementation', function () {
 
       test('member expression with runtime', () => {
         let code = transform(`
-        import { isTesting } from '@embroider/macros';
+        import { isTesting } from '@real_ate/fake-embroider-macros';
         const result = { foo: isTesting() }`);
         expect(code).toMatch(`result = true`);
       });

@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { visit, waitUntil } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-import secondSampleLib from '@embroider/second-sample-lib';
+import secondSampleLib from '@real_ate/fake-embroider-second-sample-lib';
 
 module('Acceptance | runtime basics', function (hooks) {
   setupApplicationTest(hooks);

@@ -4,7 +4,7 @@
 
 import V1Addon, { V1AddonConstructor } from './v1-addon';
 import { pathExistsSync } from 'fs-extra';
-import { AddonInstance, getOrCreate, PackageCache } from '@embroider/core';
+import { AddonInstance, getOrCreate, PackageCache } from '@real_ate/fake-embroider-core';
 import CompatApp from './compat-app';
 
 export default class V1InstanceCache {

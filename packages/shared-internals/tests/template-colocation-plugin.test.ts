@@ -1,4 +1,4 @@
-import { allBabelVersions } from '@embroider/test-support';
+import { allBabelVersions } from '@real_ate/fake-embroider-test-support';
 import { join } from 'path';
 import tmp from 'tmp';
 import { writeFileSync } from 'fs';

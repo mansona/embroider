@@ -1,4 +1,4 @@
-import { AddonMeta } from '@embroider/core';
+import { AddonMeta } from '@real_ate/fake-embroider-core';
 import { EmberDataBase } from '../ember-data';
 
 export default class EmberDataStore extends EmberDataBase {

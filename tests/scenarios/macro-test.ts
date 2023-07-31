@@ -23,7 +23,7 @@ function scenarioSetup(project: Project) {
   let funkySampleAddon = baseAddon();
 
   macroSampleAddon.pkg.name = 'macro-sample-addon';
-  funkySampleAddon.pkg.name = '@embroider/funky-sample-addon';
+  funkySampleAddon.pkg.name = '@real_ate/fake-embroider-funky-sample-addon';
 
   merge(macroSampleAddon.files, loadFromFixtureData('macro-sample-addon'));
   merge(funkySampleAddon.files, loadFromFixtureData('funky-sample-addon'));
@@ -31,9 +31,9 @@ function scenarioSetup(project: Project) {
 
   funkySampleAddon.linkDependency('broccoli-merge-trees', { baseDir: __dirname });
   funkySampleAddon.linkDependency('broccoli-funnel', { baseDir: __dirname });
-  funkySampleAddon.linkDependency('@embroider/macros', { baseDir: __dirname });
-  macroSampleAddon.linkDependency('@embroider/macros', { baseDir: __dirname });
-  project.linkDevDependency('@embroider/macros', { baseDir: __dirname });
+  funkySampleAddon.linkDependency('@real_ate/fake-embroider-macros', { baseDir: __dirname });
+  macroSampleAddon.linkDependency('@real_ate/fake-embroider-macros', { baseDir: __dirname });
+  project.linkDevDependency('@real_ate/fake-embroider-macros', { baseDir: __dirname });
   project.addDevDependency('version-changer', '4.0.0');
 
   project.addDevDependency(macroSampleAddon);
@@ -55,7 +55,7 @@ function scenarioSetup(project: Project) {
       unit: {
         'import-sync-test.js': `
           import { module, test } from 'qunit';
-          import { importSync } from '@embroider/macros';
+          import { importSync } from '@real_ate/fake-embroider-macros';
 
           module('Unit | Macro | importSync', function () {
             test('cjs interop for default export', async function (assert) {
@@ -97,7 +97,7 @@ appScenarios
       });
 
       test(`CLASSIC=true pnpm test`, async function (assert) {
-        // throw_unless_parallelizable is enabled to ensure that @embroider/macros is parallelizable
+        // throw_unless_parallelizable is enabled to ensure that @real_ate/fake-embroider-macros is parallelizable
         let result = await app.execute(`cross-env THROW_UNLESS_PARALLELIZABLE=1 CLASSIC=true pnpm test`);
         assert.equal(result.exitCode, 0, result.output);
       });
@@ -117,7 +117,7 @@ appScenarios
         app = await scenario.prepare();
       });
 
-      test(`@embroider/macros babel caching plugin works`, async function (assert) {
+      test(`@real_ate/fake-embroider-macros babel caching plugin works`, async function (assert) {
         let fourRun = await app.execute(`pnpm test`);
         assert.equal(fourRun.exitCode, 0, fourRun.output);
 
@@ -128,7 +128,7 @@ appScenarios
         assert.equal(lodashThreeRun.exitCode, 0, lodashThreeRun.output);
       });
 
-      test(`CLASSIC=true @embroider/macros babel caching plugin works`, async function (assert) {
+      test(`CLASSIC=true @real_ate/fake-embroider-macros babel caching plugin works`, async function (assert) {
         updateVersionChanger(app, '4.0.1');
 
         let lodashFourRun = await app.execute(`cross-env CLASSIC=true pnpm test`);
@@ -147,16 +147,16 @@ dummyAppScenarios
   .map('macro-sample-addon', project => {
     let addonFiles = loadFromFixtureData('macro-sample-addon');
     project.name = 'macro-sample-addon';
-    project.linkDependency('@embroider/macros', { baseDir: __dirname });
-    project.linkDependency('@embroider/webpack', { baseDir: __dirname });
-    project.linkDependency('@embroider/compat', { baseDir: __dirname });
-    project.linkDependency('@embroider/core', { baseDir: __dirname });
+    project.linkDependency('@real_ate/fake-embroider-macros', { baseDir: __dirname });
+    project.linkDependency('@real_ate/fake-embroider-webpack', { baseDir: __dirname });
+    project.linkDependency('@real_ate/fake-embroider-compat', { baseDir: __dirname });
+    project.linkDependency('@real_ate/fake-embroider-core', { baseDir: __dirname });
 
     addonFiles['index.js'] = `
     module.exports = {
       name: require('./package').name,
       options: {
-        '@embroider/macros': {
+        '@real_ate/fake-embroider-macros': {
           setOwnConfig: {
             hello: 'world',
           },

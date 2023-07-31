@@ -5,7 +5,7 @@ const someAstTransformPlugin = require('./some-ast-transform-plugin');
 
 module.exports = {
   plugins: [
-    '@embroider/addon-dev/template-colocation-plugin',
+    '@real_ate/fake-embroider-addon-dev/template-colocation-plugin',
     [
       'babel-plugin-ember-template-compilation',
       {

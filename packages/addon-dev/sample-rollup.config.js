@@ -1,5 +1,5 @@
 import babel from '@rollup/plugin-babel';
-import { Addon } from '@embroider/addon-dev/rollup';
+import { Addon } from '@real_ate/fake-embroider-addon-dev/rollup';
 
 const addon = new Addon({
   srcDir: 'src',

@@ -1,6 +1,6 @@
 import type { NodePath } from '@babel/traverse';
 import State from './state';
-import { RewrittenPackageCache, Package } from '@embroider/shared-internals';
+import { RewrittenPackageCache, Package } from '@real_ate/fake-embroider-shared-internals';
 import error from './error';
 import { Evaluator, assertArray, buildLiterals, ConfidentResult } from './evaluate-json';
 import assertNever from 'assert-never';

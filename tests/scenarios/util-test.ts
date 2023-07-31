@@ -5,7 +5,7 @@ import { dirname } from 'path';
 
 const { module: Qmodule, test } = QUnit;
 
-supportMatrix(Scenarios.fromDir(dirname(require.resolve('@embroider/util/package.json'))))
+supportMatrix(Scenarios.fromDir(dirname(require.resolve('@real_ate/fake-embroider-util/package.json'))))
   .map('util', () => {})
   .forEachScenario(scenario => {
     Qmodule(scenario.name, function (hooks) {

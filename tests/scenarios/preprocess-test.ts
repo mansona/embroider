@@ -3,7 +3,7 @@ import { PreparedApp } from 'scenario-tester';
 import QUnit from 'qunit';
 import merge from 'lodash/merge';
 import { loadFromFixtureData } from './helpers';
-import { expectFilesAt } from '@embroider/test-support/file-assertions/qunit';
+import { expectFilesAt } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
 const { module: Qmodule, test } = QUnit;
 
 appScenarios

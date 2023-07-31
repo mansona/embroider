@@ -6,7 +6,7 @@ import {
   RewrittenPackageCache,
   Package,
   locateEmbroiderWorkingDir,
-} from '@embroider/core';
+} from '@real_ate/fake-embroider-core';
 import Options, { optionsWithDefaults } from './options';
 import { Memoize } from 'typescript-memoize';
 import { sync as pkgUpSync } from 'pkg-up';
@@ -17,12 +17,18 @@ import { WatchedDir } from 'broccoli-source';
 import resolve from 'resolve';
 import { V1Config, WriteV1Config } from './v1-config';
 import { WriteV1AppBoot, ReadV1AppBoot } from './v1-appboot';
-import { AddonMeta, EmberAppInstance, OutputFileToInputFileMap, PackageInfo, AddonInstance } from '@embroider/core';
+import {
+  AddonMeta,
+  EmberAppInstance,
+  OutputFileToInputFileMap,
+  PackageInfo,
+  AddonInstance,
+} from '@real_ate/fake-embroider-core';
 import { writeJSONSync, ensureDirSync, copySync, readdirSync, pathExistsSync, existsSync } from 'fs-extra';
 import AddToTree from './add-to-tree';
 import DummyPackage from './dummy-package';
 import { TransformOptions } from '@babel/core';
-import { isEmbroiderMacrosPlugin, MacrosConfig } from '@embroider/macros/src/node';
+import { isEmbroiderMacrosPlugin, MacrosConfig } from '@real_ate/fake-embroider-macros/src/node';
 import resolvePackagePath from 'resolve-package-path';
 import Concat from 'broccoli-concat';
 import mapKeys from 'lodash/mapKeys';
@@ -48,7 +54,7 @@ interface Group {
 // This runs at broccoli-pipeline-construction time, whereas the
 // CompatAppBuilder instance only becomes available during tree-building time.
 export default class CompatApp {
-  private annotation = '@embroider/compat/app';
+  private annotation = '@real_ate/fake-embroider-compat/app';
   private active: CompatAppBuilder | undefined;
   readonly options: Required<Options>;
 
@@ -261,7 +267,7 @@ export default class CompatApp {
     }
 
     plugins = plugins.filter(p => {
-      // even if the app was using @embroider/macros, we drop it from the config
+      // even if the app was using @real_ate/fake-embroider-macros, we drop it from the config
       // here in favor of our globally-configured one.
       return (
         !isEmbroiderMacrosPlugin(p) &&
@@ -307,7 +313,7 @@ export default class CompatApp {
         }
       }
       if (babelMajor !== 7) {
-        throw new Error('`@embroider/compat` only supports apps and addons that use Babel v7.');
+        throw new Error('`@real_ate/fake-embroider-compat` only supports apps and addons that use Babel v7.');
       }
       return babelMajor;
     }
@@ -454,7 +460,7 @@ export default class CompatApp {
         'public-assets': mapKeys(this._publicAssets, (_, key) => remapAsset(key)),
       };
       let meta: PackageInfo = {
-        name: '@embroider/synthesized-vendor',
+        name: '@real_ate/fake-embroider-synthesized-vendor',
         version: '0.0.0',
         keywords: ['ember-addon'],
         'ember-addon': addonMeta,
@@ -517,7 +523,7 @@ export default class CompatApp {
         }
       }
       let meta: PackageInfo = {
-        name: '@embroider/synthesized-styles',
+        name: '@real_ate/fake-embroider-synthesized-styles',
         version: '0.0.0',
         keywords: ['ember-addon'],
         'ember-addon': addonMeta,
@@ -590,7 +596,7 @@ export default class CompatApp {
     ) as unknown as EmberCliHTMLBarsAddon;
     let options = addon.htmlbarsOptions();
     if (options?.plugins?.ast) {
-      // even if the app was using @embroider/macros, we drop it from the config
+      // even if the app was using @real_ate/fake-embroider-macros, we drop it from the config
       // here in favor of our globally-configured one.
       options.plugins.ast = options.plugins.ast.filter((p: any) => !isEmbroiderMacrosPlugin(p));
       prepHtmlbarsAstPluginsForUnwrap(this.legacyEmberAppInstance.registry);
@@ -793,7 +799,7 @@ export default class CompatApp {
     // this uses globalConfig because it's a way for packages to ask "is
     // Embroider doing this build?". So it's necessarily global, not scoped to
     // any subgraph of dependencies.
-    this.macrosConfig.setGlobalConfig(__filename, `@embroider/core`, {
+    this.macrosConfig.setGlobalConfig(__filename, `@real_ate/fake-embroider-core`, {
       // this is hard-coded to true because it literally means "embroider is
       // building this Ember app". You can see non-true when using the Embroider
       // macros in a classic build.

@@ -4,13 +4,13 @@ import dependencySatisfies from './dependency-satisfies';
 import { maybeAttrs } from './macro-maybe-attrs';
 import { macroIfBlock, macroIfExpression, macroIfMustache } from './macro-condition';
 import { failBuild } from './fail-build';
-import { RewrittenPackageCache } from '@embroider/shared-internals';
+import { RewrittenPackageCache } from '@real_ate/fake-embroider-shared-internals';
 
 export interface BuildPluginParams {
   // Glimmer requires this on ast transforms.
   name: string;
 
-  // this is the location of @embroider/macros itself. Glimmer requires this on
+  // this is the location of @real_ate/fake-embroider-macros itself. Glimmer requires this on
   // ast transforms.
   baseDir: string;
 
@@ -21,7 +21,7 @@ export interface BuildPluginParams {
 
 export interface FirstTransformParams {
   // this is the location of the particular package (app or addon) that is
-  // depending on @embroider/macros *if* we're in a classic build. Under
+  // depending on @real_ate/fake-embroider-macros *if* we're in a classic build. Under
   // embroider the build is global and there's no single packageRoot.
   packageRoot: string | undefined;
 
@@ -50,7 +50,7 @@ export function makeFirstTransform(opts: FirstTransformParams) {
     filename: string;
   }) {
     if (!opts.packageRoot && !env.filename) {
-      throw new Error(`bug in @embroider/macros. Running without packageRoot but don't have filename.`);
+      throw new Error(`bug in @real_ate/fake-embroider-macros. Running without packageRoot but don't have filename.`);
     }
 
     let packageCache = RewrittenPackageCache.shared('embroider', opts.appRoot);
@@ -62,7 +62,7 @@ export function makeFirstTransform(opts: FirstTransformParams) {
     const moduleName = opts.packageRoot ? env.meta.moduleName : env.filename;
 
     return {
-      name: '@embroider/macros/first',
+      name: '@real_ate/fake-embroider-macros/first',
 
       visitor: {
         Program: {
@@ -147,7 +147,7 @@ export function makeSecondTransform() {
   function embroiderSecondMacrosTransform(env: { syntax: { builders: any } }) {
     let scopeStack: string[][] = [];
     return {
-      name: '@embroider/macros/second',
+      name: '@real_ate/fake-embroider-macros/second',
 
       visitor: {
         Program: {

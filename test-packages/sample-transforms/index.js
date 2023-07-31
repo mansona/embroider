@@ -19,7 +19,7 @@ module.exports = {
 
   _plugin() {
     return {
-      name: `@embroider/sample-transforms`,
+      name: `@real_ate/fake-embroider-sample-transforms`,
       plugin: require('./lib/glimmer-plugin'),
       baseDir() {
         return __dirname;

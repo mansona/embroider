@@ -10,8 +10,8 @@ module.exports = function (defaults) {
     },
   });
 
-  const { Webpack } = require('@embroider/webpack');
-  return require('@embroider/compat').compatBuild(app, Webpack, {
+  const { Webpack } = require('@real_ate/fake-embroider-webpack');
+  return require('@real_ate/fake-embroider-compat').compatBuild(app, Webpack, {
     skipBabel: [
       {
         package: 'qunit',

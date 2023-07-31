@@ -17,6 +17,6 @@ module.exports = function(defaults) {
   if (process.env.CLASSIC) {
     return app.toTree();
   }
-  const Webpack = require('@embroider/webpack').Webpack;
-  return require('@embroider/compat').compatBuild(app, Webpack);
+  const Webpack = require('@real_ate/fake-embroider-webpack').Webpack;
+  return require('@real_ate/fake-embroider-compat').compatBuild(app, Webpack);
 };

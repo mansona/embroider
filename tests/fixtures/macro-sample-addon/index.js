@@ -3,7 +3,7 @@
 module.exports = {
   name: require('./package').name,
   options: {
-    '@embroider/macros': {
+    '@real_ate/fake-embroider-macros': {
       setOwnConfig: {
         shouldBeOverwritten: 'not overwritten',
         configFromAddonItself: 'this is the addon',

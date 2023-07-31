@@ -17,7 +17,7 @@ export function isEachPath(path: NodePath<t.ForOfStatement>): path is EachPath {
   let right = path.get('right');
   if (right.isCallExpression()) {
     let callee = right.get('callee');
-    if (callee.referencesImport('@embroider/macros', 'each')) {
+    if (callee.referencesImport('@real_ate/fake-embroider-macros', 'each')) {
       return true;
     }
   }

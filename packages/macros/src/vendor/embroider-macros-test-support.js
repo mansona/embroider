@@ -5,8 +5,8 @@
   }
   window[key].push(function(m) {
     m.setGlobalConfig(
-      '@embroider/macros',
-      Object.assign({}, m.getGlobalConfig()['@embroider/macros'], { isTesting: true })
+      '@real_ate/fake-embroider-macros',
+      Object.assign({}, m.getGlobalConfig()['@real_ate/fake-embroider-macros'], { isTesting: true })
     );
   });
 })();

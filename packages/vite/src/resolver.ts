@@ -8,7 +8,7 @@ import {
   ResolverOptions,
   locateEmbroiderWorkingDir,
   virtualContent,
-} from '@embroider/core';
+} from '@real_ate/fake-embroider-core';
 import { readJSONSync } from 'fs-extra';
 import { RollupModuleRequest, virtualPrefix } from './request';
 import assertNever from 'assert-never';

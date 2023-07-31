@@ -9,7 +9,7 @@ describe(`fail build macro`, function () {
     test('it can fail the build', () => {
       expect(() => {
         transform(`
-          import { failBuild } from '@embroider/macros';
+          import { failBuild } from '@real_ate/fake-embroider-macros';
           failBuild("This is a deliberate build failure");
         `);
       }).toThrow(/This is a deliberate build failure/);
@@ -18,7 +18,7 @@ describe(`fail build macro`, function () {
     test('the failure message can incorporate other macro output', () => {
       expect(() => {
         transform(`
-          import { failBuild, getOwnConfig } from '@embroider/macros';
+          import { failBuild, getOwnConfig } from '@real_ate/fake-embroider-macros';
           failBuild("failing because %s", getOwnConfig().failureMessage);
         `);
       }).toThrow(/failing because I said so/);
@@ -26,7 +26,7 @@ describe(`fail build macro`, function () {
 
     test('it does not fail the build when its inside a dead branch', () => {
       let code = transform(`
-      import { macroCondition, failBuild } from '@embroider/macros';
+      import { macroCondition, failBuild } from '@real_ate/fake-embroider-macros';
       export default function() {
         if (macroCondition(true)) {
           return 'it works';
@@ -41,7 +41,7 @@ describe(`fail build macro`, function () {
     test('non call error', () => {
       expect(() => {
         transform(`
-          import { failBuild } from '@embroider/macros';
+          import { failBuild } from '@real_ate/fake-embroider-macros';
           let x = failBuild;
         `);
       }).toThrow(/You can only use failBuild as a function call/);

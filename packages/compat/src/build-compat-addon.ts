@@ -1,5 +1,5 @@
 import V1InstanceCache from './v1-instance-cache';
-import { Package } from '@embroider/core';
+import { Package } from '@real_ate/fake-embroider-core';
 import SmooshPackageJSON from './smoosh-package-json';
 import broccoliMergeTrees from 'broccoli-merge-trees';
 import { Node } from 'broccoli-node-api';
@@ -8,7 +8,7 @@ import EmptyPackageTree from './empty-package-tree';
 export default function buildCompatAddon(originalPackage: Package, v1Cache: V1InstanceCache): Node {
   if (originalPackage.isV2Addon()) {
     throw new Error(
-      `bug in @embroider/compat. We should not see any v2 addons here, but ${originalPackage.name} as ${originalPackage.root} is a v2 addon`
+      `bug in @real_ate/fake-embroider-compat. We should not see any v2 addons here, but ${originalPackage.name} as ${originalPackage.root} is a v2 addon`
     );
   }
 

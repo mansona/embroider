@@ -2,9 +2,13 @@ import { PreparedApp } from 'scenario-tester';
 import { appScenarios, baseAddon, renameApp } from './scenarios';
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { Transpiler } from '@embroider/test-support';
-import { ExpectFile, expectFilesAt, expectRewrittenFilesAt } from '@embroider/test-support/file-assertions/qunit';
-import { throwOnWarnings } from '@embroider/core';
+import { Transpiler } from '@real_ate/fake-embroider-test-support';
+import {
+  ExpectFile,
+  expectFilesAt,
+  expectRewrittenFilesAt,
+} from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
 import merge from 'lodash/merge';
 import QUnit from 'qunit';
 const { module: Qmodule, test } = QUnit;
@@ -67,7 +71,7 @@ scenarios
       'ember-cli-build.js': `
         'use strict';
         const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-        const { maybeEmbroider } = require('@embroider/test-setup');
+        const { maybeEmbroider } = require('@real_ate/fake-embroider-test-setup');
         module.exports = function (defaults) {
           let app = new EmberApp(defaults, {});
           return maybeEmbroider(app, {
@@ -171,7 +175,7 @@ scenarios
       'ember-cli-build.js': `
         'use strict';
         const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-        const { maybeEmbroider } = require('@embroider/test-setup');
+        const { maybeEmbroider } = require('@real_ate/fake-embroider-test-setup');
         module.exports = function (defaults) {
           let app = new EmberApp(defaults, {});
           return maybeEmbroider(app, {
@@ -223,7 +227,7 @@ appScenarios
       'ember-cli-build.js': `
         'use strict';
         const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-        const { maybeEmbroider } = require('@embroider/test-setup');
+        const { maybeEmbroider } = require('@real_ate/fake-embroider-test-setup');
         module.exports = function (defaults) {
           let app = new EmberApp(defaults, {});
           return maybeEmbroider(app, {

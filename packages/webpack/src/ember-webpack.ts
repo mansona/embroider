@@ -20,8 +20,8 @@ import {
   getPackagerCacheDir,
   getOrCreate,
   ResolverOptions,
-} from '@embroider/core';
-import { locateEmbroiderWorkingDir, RewrittenPackageCache, tmpdir } from '@embroider/shared-internals';
+} from '@real_ate/fake-embroider-core';
+import { locateEmbroiderWorkingDir, RewrittenPackageCache, tmpdir } from '@real_ate/fake-embroider-shared-internals';
 import webpack, { Configuration, RuleSetUseItem, WebpackPluginInstance } from 'webpack';
 import { readFileSync, outputFileSync, copySync, Stats, statSync, readJSONSync } from 'fs-extra';
 import { join, dirname, relative, sep } from 'path';
@@ -36,7 +36,7 @@ import { Options, BabelLoaderOptions } from './options';
 import crypto from 'crypto';
 import semverSatisfies from 'semver/functions/satisfies';
 import supportsColor from 'supports-color';
-import { Options as HbsLoaderOptions } from '@embroider/hbs-loader';
+import { Options as HbsLoaderOptions } from '@real_ate/fake-embroider-hbs-loader';
 import { EmbroiderPlugin, Options as EmbroiderPluginOptions } from './webpack-resolver-plugin';
 
 const debug = makeDebug('embroider:debug');
@@ -108,7 +108,7 @@ function createBarrier(): [BeginFn, IncrementFn] {
 // just exporting our class directly, we export a const constructor of the
 // correct type.
 const Webpack: PackagerConstructor<Options> = class Webpack implements Packager {
-  static annotation = '@embroider/webpack';
+  static annotation = '@real_ate/fake-embroider-webpack';
 
   private pathToVanillaApp: string;
   private extraConfig: Configuration | undefined;
@@ -130,7 +130,7 @@ const Webpack: PackagerConstructor<Options> = class Webpack implements Packager 
     options?: Options
   ) {
     if (!semverSatisfies(webpack.version, '^5.0.0')) {
-      throw new Error(`@embroider/webpack requires webpack@^5.0.0, but found version ${webpack.version}`);
+      throw new Error(`@real_ate/fake-embroider-webpack requires webpack@^5.0.0, but found version ${webpack.version}`);
     }
 
     let packageCache = RewrittenPackageCache.shared('embroider', appRoot);
@@ -235,7 +235,7 @@ const Webpack: PackagerConstructor<Options> = class Webpack implements Packager 
               maybeThreadLoader(babel.isParallelSafe, this.extraThreadLoaderOptions),
               babelLoaderOptions,
               {
-                loader: require.resolve('@embroider/hbs-loader'),
+                loader: require.resolve('@real_ate/fake-embroider-hbs-loader'),
                 options: (() => {
                   let options: HbsLoaderOptions = {
                     compatModuleNaming: {
@@ -287,7 +287,7 @@ const Webpack: PackagerConstructor<Options> = class Webpack implements Packager 
           // not overriding the default loader resolution rules in case the app also
           // wants to control those.
           'thread-loader': require.resolve('thread-loader'),
-          'babel-loader-8': require.resolve('@embroider/babel-loader-8'),
+          'babel-loader-8': require.resolve('@real_ate/fake-embroider-babel-loader-8'),
           'css-loader': require.resolve('css-loader'),
           'style-loader': require.resolve('style-loader'),
         },
@@ -672,8 +672,8 @@ function warmUp(extraOptions: object | false | undefined) {
   }
 
   threadLoaderWarmup(Object.assign({}, threadLoaderOptions, extraOptions), [
-    require.resolve('@embroider/hbs-loader'),
-    require.resolve('@embroider/babel-loader-8'),
+    require.resolve('@real_ate/fake-embroider-hbs-loader'),
+    require.resolve('@real_ate/fake-embroider-babel-loader-8'),
   ]);
 }
 

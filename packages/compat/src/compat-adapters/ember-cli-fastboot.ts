@@ -6,7 +6,7 @@ import { join } from 'path';
 import writeFile from 'broccoli-file-creator';
 import { Memoize } from 'typescript-memoize';
 import bind from 'bind-decorator';
-import { AddonMeta } from '@embroider/core';
+import { AddonMeta } from '@real_ate/fake-embroider-core';
 
 export default class EmberCliFastboot extends V1Addon {
   customizes(...trees: string[]): boolean {

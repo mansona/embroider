@@ -4,9 +4,9 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import QUnit from 'qunit';
 const { module: Qmodule, test } = QUnit;
-import { ExpectFile, expectFilesAt } from '@embroider/test-support/file-assertions/qunit';
-import { throwOnWarnings } from '@embroider/core';
-import { setupAuditTest } from '@embroider/test-support/audit-assertions';
+import { ExpectFile, expectFilesAt } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
+import { setupAuditTest } from '@real_ate/fake-embroider-test-support/audit-assertions';
 
 appScenarios
   .map('compat-namespaced-app', app => {

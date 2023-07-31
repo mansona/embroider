@@ -1,4 +1,4 @@
-import { allBabelVersions } from '@embroider/test-support';
+import { allBabelVersions } from '@real_ate/fake-embroider-test-support';
 import { makeBabelConfig, allModes, makeRunner } from './helpers';
 import { MacrosConfig } from '../../src/node';
 
@@ -22,7 +22,7 @@ describe('each', function () {
 
       buildTimeTest('plugins example unrolls correctly', () => {
         let code = transform(`
-      import { each, getOwnConfig, importSync } from '@embroider/macros';
+      import { each, getOwnConfig, importSync } from '@real_ate/fake-embroider-macros';
       let plugins = [];
       for (let plugin of each(getOwnConfig().plugins)) {
         plugins.push(plugin);
@@ -35,7 +35,7 @@ describe('each', function () {
 
       runTimeTest('loop executes', () => {
         let code = transform(`
-          import { each, getOwnConfig } from '@embroider/macros';
+          import { each, getOwnConfig } from '@real_ate/fake-embroider-macros';
           export default function() {
             let plugins = [];
             for (let plugin of each(getOwnConfig().plugins)) {
@@ -51,7 +51,7 @@ describe('each', function () {
       test('non-static array causes build error', () => {
         expect(() => {
           transform(`
-            import { each } from '@embroider/macros';
+            import { each } from '@real_ate/fake-embroider-macros';
             for (let plugin of each(doSomething())) {}
         `);
         }).toThrow(/the argument to the each\(\) macro must be statically known/);
@@ -60,7 +60,7 @@ describe('each', function () {
       buildTimeTest('static non-array causes build error', () => {
         expect(() => {
           transform(`
-        import { each, getOwnConfig } from '@embroider/macros';
+        import { each, getOwnConfig } from '@real_ate/fake-embroider-macros';
         for (let plugin of each(getOwnConfig().flavor)) {}
         `);
         }).toThrow(/the argument to the each\(\) macro must be an array/);
@@ -68,7 +68,7 @@ describe('each', function () {
 
       runTimeTest('static non-array causes runtime error', () => {
         let code = transform(`
-          import { each, getOwnConfig } from '@embroider/macros';
+          import { each, getOwnConfig } from '@real_ate/fake-embroider-macros';
           for (let plugin of each(getOwnConfig().flavor)) {}
         `);
         expect(() => {
@@ -79,7 +79,7 @@ describe('each', function () {
       test('wrong arity', () => {
         expect(() => {
           transform(`
-        import { each } from '@embroider/macros';
+        import { each } from '@real_ate/fake-embroider-macros';
         for (let plugin of each(1,2,3)) {}
         `);
         }).toThrow(/the each\(\) macro accepts exactly one argument, you passed 3/);
@@ -88,7 +88,7 @@ describe('each', function () {
       test('non function call', () => {
         expect(() => {
           transform(`
-        import { each } from '@embroider/macros';
+        import { each } from '@real_ate/fake-embroider-macros';
         let x = each;
         `);
         }).toThrow(/the each\(\) macro can only be used within a for \.\.\. of statement/);
@@ -97,7 +97,7 @@ describe('each', function () {
       test('non for-of usage', () => {
         expect(() => {
           transform(`
-        import { each } from '@embroider/macros';
+        import { each } from '@real_ate/fake-embroider-macros';
         each(1,2,3)
         `);
         }).toThrow(/the each\(\) macro can only be used within a for \.\.\. of statement/);

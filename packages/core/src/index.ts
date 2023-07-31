@@ -27,5 +27,5 @@ export { virtualContent } from './virtual-content';
 export type { Engine } from './app-files';
 
 // this is reexported because we already make users manage a peerDep from some
-// other packages (like embroider/webpack and @embroider/compat
-export * from '@embroider/shared-internals';
+// other packages (like embroider/webpack and @real_ate/fake-embroider-compat
+export * from '@real_ate/fake-embroider-shared-internals';

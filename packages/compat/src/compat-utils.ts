@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep';
-import { AddonMeta, PackageInfo } from '@embroider/core';
+import { AddonMeta, PackageInfo } from '@real_ate/fake-embroider-core';
 import resolve from 'resolve';
 import { resolve as pathResolve } from 'path';
 import { PluginItem } from '@babel/core';

@@ -26,6 +26,6 @@ module.exports = function (defaults) {
     return app.toTree();
   }
 
-  const { maybeEmbroider } = require('@embroider/test-setup');
+  const { maybeEmbroider } = require('@real_ate/fake-embroider-test-setup');
   return maybeEmbroider(app);
 };

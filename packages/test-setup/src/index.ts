@@ -1,6 +1,6 @@
-import type { PipelineOptions } from '@embroider/compat';
-import type { PackagerConstructor } from '@embroider/core';
-import type { Webpack } from '@embroider/webpack';
+import type { PipelineOptions } from '@real_ate/fake-embroider-compat';
+import type { PackagerConstructor } from '@real_ate/fake-embroider-core';
+import type { Webpack } from '@real_ate/fake-embroider-webpack';
 
 type EmberWebpackOptions = typeof Webpack extends PackagerConstructor<infer Options> ? Options : never;
 
@@ -8,10 +8,10 @@ type EmberWebpackOptions = typeof Webpack extends PackagerConstructor<infer Opti
 const ourPeerDeps = require('../package.json').peerDependencies;
 
 const embroiderDevDeps = {
-  '@embroider/core': `${ourPeerDeps['@embroider/core']}`,
-  '@embroider/webpack': `${ourPeerDeps['@embroider/webpack']}`,
-  '@embroider/compat': `${ourPeerDeps['@embroider/compat']}`,
-  // Webpack is a peer dependency of `@embroider/webpack`
+  '@real_ate/fake-embroider-core': `${ourPeerDeps['@real_ate/fake-embroider-core']}`,
+  '@real_ate/fake-embroider-webpack': `${ourPeerDeps['@real_ate/fake-embroider-webpack']}`,
+  '@real_ate/fake-embroider-compat': `${ourPeerDeps['@real_ate/fake-embroider-compat']}`,
+  // Webpack is a peer dependency of `@real_ate/fake-embroider-webpack`
   webpack: '^5.0.0',
 };
 
@@ -30,12 +30,12 @@ export function maybeEmbroider(app: any, opts: PipelineOptions<EmberWebpackOptio
   //  - we don't want to load any of these things until they're actually needed;
   //  - we can't use `await import()` because this function needs to be synchronous to go inside ember-cli-build.js
   /* eslint-disable @typescript-eslint/no-require-imports */
-  let { Webpack } = require(require.resolve('@embroider/webpack', {
+  let { Webpack } = require(require.resolve('@real_ate/fake-embroider-webpack', {
     paths: [app.project.root],
-  })) as typeof import('@embroider/webpack');
-  let Compat = require(require.resolve('@embroider/compat', {
+  })) as typeof import('@real_ate/fake-embroider-webpack');
+  let Compat = require(require.resolve('@real_ate/fake-embroider-compat', {
     paths: [app.project.root],
-  })) as typeof import('@embroider/compat');
+  })) as typeof import('@real_ate/fake-embroider-compat');
   let mergeWith = require('lodash/mergeWith') as typeof import('lodash/mergeWith');
   /* eslint-enable @typescript-eslint/no-require-imports */
 
@@ -101,5 +101,5 @@ function shouldUseEmbroider(app: any): boolean {
   if (process.env.EMBROIDER_TEST_SETUP_FORCE === 'embroider') {
     return true;
   }
-  return '@embroider/core' in app.dependencies();
+  return '@real_ate/fake-embroider-core' in app.dependencies();
 }

@@ -1,14 +1,14 @@
-import { Options } from '@embroider/compat';
+import { Options } from '@real_ate/fake-embroider-compat';
 import { writeFileSync, unlinkSync } from 'fs';
 import { PreparedApp, Project } from 'scenario-tester';
 import { appScenarios, baseAddon, dummyAppScenarios, renameApp } from './scenarios';
 import { join, resolve } from 'path';
-import { Rebuilder, Transpiler } from '@embroider/test-support';
-import { expectRewrittenFilesAt, ExpectFile } from '@embroider/test-support/file-assertions/qunit';
-import { throwOnWarnings } from '@embroider/core';
+import { Rebuilder, Transpiler } from '@real_ate/fake-embroider-test-support';
+import { expectRewrittenFilesAt, ExpectFile } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
 import merge from 'lodash/merge';
 import QUnit from 'qunit';
-import { setupAuditTest } from '@embroider/test-support/audit-assertions';
+import { setupAuditTest } from '@real_ate/fake-embroider-test-support/audit-assertions';
 
 const { module: Qmodule, test } = QUnit;
 
@@ -234,7 +234,7 @@ stage2Scenarios
 stage2Scenarios
   .map('static-with-rules', app => {
     app.addDependency('some-library', '1.0.0');
-    app.linkDependency('@embroider/sample-transforms', { baseDir: __dirname });
+    app.linkDependency('@real_ate/fake-embroider-sample-transforms', { baseDir: __dirname });
 
     let options: Options = {
       staticComponents: true,
@@ -302,7 +302,7 @@ stage2Scenarios
       'ember-cli-build.js': `
         'use strict';
         const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-        const { maybeEmbroider } = require('@embroider/test-setup');
+        const { maybeEmbroider } = require('@real_ate/fake-embroider-test-setup');
         let opts = ${JSON.stringify(options)};
         module.exports = function (defaults) {
           let app = new EmberApp(defaults, {
@@ -543,7 +543,7 @@ stage2Scenarios
         import layout from '../templates/components/hello-world';
         import computed from '@ember/object/computed';
         import somethingExternal from 'not-a-resolvable-package';
-        import { importSync } from "@embroider/macros";
+        import { importSync } from "@real_ate/fake-embroider-macros";
         export default Component.extend({
           dynamicComponentName: computed('useDynamic', function () {
             return this.useDynamic || 'default-dynamic';
@@ -558,7 +558,7 @@ stage2Scenarios
           window.define("my-addon/synthetic-import-1", function () {
             return importSync("my-addon/synthetic-import-1");
           });
-          import { importSync } from '@embroider/macros';
+          import { importSync } from '@real_ate/fake-embroider-macros';
           export { default } from 'my-addon/components/hello-world';
         `);
 
@@ -714,15 +714,15 @@ stage2Scenarios
 dummyAppScenarios
   .map('compat-stage2-addon-dummy-app', app => {
     renameApp(app, 'my-addon');
-    app.linkDependency('@embroider/core', { baseDir: __dirname });
-    app.linkDependency('@embroider/compat', { baseDir: __dirname });
-    app.linkDependency('@embroider/webpack', { baseDir: __dirname });
+    app.linkDependency('@real_ate/fake-embroider-core', { baseDir: __dirname });
+    app.linkDependency('@real_ate/fake-embroider-compat', { baseDir: __dirname });
+    app.linkDependency('@real_ate/fake-embroider-webpack', { baseDir: __dirname });
 
     merge(app.files, {
       addon: {
         components: {
           'hello-world.js': `
-              import { isDevelopingThisPackage } from '@embroider/macros';
+              import { isDevelopingThisPackage } from '@real_ate/fake-embroider-macros';
               console.log(isDevelopingThisPackage());`,
         },
       },
@@ -731,7 +731,7 @@ dummyAppScenarios
           app: {
             components: {
               'inside-dummy-app.js': `
-                  import { isDevelopingThisPackage } from '@embroider/macros';
+                  import { isDevelopingThisPackage } from '@real_ate/fake-embroider-macros';
                   console.log(isDevelopingThisPackage());`,
             },
           },

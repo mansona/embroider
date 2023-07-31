@@ -8,7 +8,7 @@ describe('importSync', function () {
 
     test('importSync becomes esc(require())', () => {
       let code = transform(`
-      import { importSync } from '@embroider/macros';
+      import { importSync } from '@real_ate/fake-embroider-macros';
       importSync('foo');
       `);
       expect(code).toMatch(/import esc from "\.\.\/\.\.\/src\/addon\/es-compat2"/);
@@ -17,7 +17,7 @@ describe('importSync', function () {
     });
     test('importSync leaves existing binding for require alone', () => {
       let code = transform(`
-      import { importSync } from '@embroider/macros';
+      import { importSync } from '@real_ate/fake-embroider-macros';
       import require from 'require';
       importSync('foo');
       require('x');
@@ -28,7 +28,7 @@ describe('importSync', function () {
     });
     test('aliased importSync becomes require', () => {
       let code = transform(`
-      import { importSync as i } from '@embroider/macros';
+      import { importSync as i } from '@real_ate/fake-embroider-macros';
       i('foo');
       `);
       expect(code).toMatch(/require\(['"]foo['"]\)/);
@@ -36,7 +36,7 @@ describe('importSync', function () {
     });
     test('import of importSync itself gets removed', () => {
       let code = transform(`
-      import { importSync } from '@embroider/macros';
+      import { importSync } from '@real_ate/fake-embroider-macros';
       `);
       expect(code).toEqual('');
     });
@@ -48,7 +48,7 @@ describe('importSync', function () {
     });
     test('importSync accepts a macro-expanded argument', () => {
       let code = transform(`
-      import { importSync, getOwnConfig } from '@embroider/macros';
+      import { importSync, getOwnConfig } from '@real_ate/fake-embroider-macros';
       importSync(getOwnConfig().target);
       `);
       expect(code).toMatch(/require\(['"]my-plugin['"]\)/);

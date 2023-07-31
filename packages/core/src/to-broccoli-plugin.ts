@@ -1,7 +1,7 @@
 import Plugin from 'broccoli-plugin';
 import { Packager, PackagerConstructor, Variant } from './packager';
 import Stage from './stage';
-import { tmpdir } from '@embroider/shared-internals';
+import { tmpdir } from '@real_ate/fake-embroider-shared-internals';
 
 interface BroccoliPackager<Options> {
   new (stage: Stage, variants: Variant[], options?: Options): Plugin;

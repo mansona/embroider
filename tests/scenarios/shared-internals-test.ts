@@ -8,7 +8,7 @@ Scenarios.fromProject(() => new Project('shared-internals-tests'))
     project.pkg.volta = {
       node: '12.22.1',
     };
-    project.linkDependency('@embroider/shared-internals', { baseDir: __dirname });
+    project.linkDependency('@real_ate/fake-embroider-shared-internals', { baseDir: __dirname });
     project.linkDependency('qunit', { baseDir: __dirname });
     project.linkDependency('semver', { baseDir: __dirname });
 
@@ -16,8 +16,8 @@ Scenarios.fromProject(() => new Project('shared-internals-tests'))
       'test.js': `
         const { module: QModule, test } = require("qunit");
         const semver = require("semver");
-        const { PackageCache } = require("@embroider/shared-internals");
-        
+        const { PackageCache } = require("@real_ate/fake-embroider-shared-internals");
+
         QModule("shared-internals", function () {
           test("testing on node 12", function (assert) {
             assert.ok(
@@ -25,7 +25,7 @@ Scenarios.fromProject(() => new Project('shared-internals-tests'))
               \`\${process.version} should be what we expected\`
             );
           });
-        
+
           test("smoke test", async function (assert) {
             let pk = PackageCache.shared("my-test", __dirname);
             assert.equal(pk.get(__dirname).name, "shared-internals-tests");

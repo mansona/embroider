@@ -6,7 +6,7 @@ import { setComponentTemplate } from '@ember/component';
 import Component from '@glimmer/component';
 import templateOnlyComponent from '@ember/component/template-only';
 import { setupDeprecationAssertions } from '../../deprecation-assertions';
-import { ensureSafeComponent } from '@embroider/util';
+import { ensureSafeComponent } from '@real_ate/fake-embroider-util';
 import * as SomeComponentModule from 'dummy/components/some-component';
 import ColocatedExample from 'dummy/components/colocated-example';
 import { setOwner } from '@ember/application';

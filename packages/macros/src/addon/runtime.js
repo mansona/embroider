@@ -13,7 +13,7 @@
 
 /*
   CAUTION: in classic builds, this file gets shared by all present copies of
-  @embroider/macros. If you want to change its public API, you need to rename it
+  @real_ate/fake-embroider-macros. If you want to change its public API, you need to rename it
   and update `pathToRuntime` in ../babel/state.ts to point at it, so that your
   babel plugin and runtime will match.
 */
@@ -41,7 +41,7 @@ export function getGlobalConfig() {
 
 export function isTesting() {
   let g = runtimeConfig.global;
-  let e = g && g['@embroider/macros'];
+  let e = g && g['@real_ate/fake-embroider-macros'];
   return Boolean(e && e.isTesting);
 }
 
@@ -76,7 +76,7 @@ function updaterMethods() {
 // each consumers -- read first, then merge, then write.
 //
 // For an example user of this API, see where we generate
-// embroider_macros_fastboot_init.js' in @embroider/core.
+// embroider_macros_fastboot_init.js' in @real_ate/fake-embroider-core.
 let updaters = typeof window !== 'undefined' ? window._embroider_macros_runtime_config : undefined;
 if (updaters) {
   let methods = updaterMethods();

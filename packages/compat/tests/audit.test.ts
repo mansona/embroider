@@ -1,13 +1,13 @@
-import { emberTemplateCompiler } from '@embroider/test-support';
+import { emberTemplateCompiler } from '@real_ate/fake-embroider-test-support';
 import { Project } from 'scenario-tester';
-import { AppMeta, throwOnWarnings } from '@embroider/core';
+import { AppMeta, throwOnWarnings } from '@real_ate/fake-embroider-core';
 import merge from 'lodash/merge';
 import fromPairs from 'lodash/fromPairs';
 import { Audit, Finding } from '../src/audit';
 import { CompatResolverOptions } from '../src/resolver-transform';
 import type { TransformOptions } from '@babel/core';
 import type { Options as InlinePrecompileOptions } from 'babel-plugin-ember-template-compilation';
-import { makePortable } from '@embroider/core/src/portable-babel-config';
+import { makePortable } from '@real_ate/fake-embroider-core/src/portable-babel-config';
 import type { Transform } from 'babel-plugin-ember-template-compilation';
 import type { Options as ResolverTransformOptions } from '../src/resolver-transform';
 
@@ -114,7 +114,7 @@ describe('audit', function () {
       './index.html',
       './app.js',
       './hello.hbs',
-      '/@embroider/ext-cjs/@ember/template-factory',
+      '/@real_ate/fake-embroider-ext-cjs/@ember/template-factory',
     ]);
   });
 
@@ -310,9 +310,9 @@ describe('audit', function () {
     expect(Object.keys(result.modules).length).toBe(3);
   });
 
-  test(`tolerates @embroider/macros`, async function () {
+  test(`tolerates @real_ate/fake-embroider-macros`, async function () {
     merge(app.files, {
-      'app.js': `import { dependencySatisfies } from '@embroider/macros'`,
+      'app.js': `import { dependencySatisfies } from '@real_ate/fake-embroider-macros'`,
     });
     let result = await audit();
     expect(result.findings).toEqual([]);

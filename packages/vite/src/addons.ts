@@ -1,4 +1,4 @@
-import { ResolverLoader, packageName } from '@embroider/core';
+import { ResolverLoader, packageName } from '@real_ate/fake-embroider-core';
 
 export function addons(root: string): string[] {
   let rloader = new ResolverLoader(root);

@@ -1,4 +1,4 @@
-import { throwOnWarnings } from '@embroider/core';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
 import { PreparedApp } from 'scenario-tester';
 import { appScenarios } from './scenarios';
 import QUnit from 'qunit';

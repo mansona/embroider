@@ -11,7 +11,7 @@ appScenarios
     project.pkg.fastbootDependencies = ['crypto', 'node-fetch'];
 
     project.addDependency(
-      new Project('@embroider/sample-lib', '0.0.0', {
+      new Project('@real_ate/fake-embroider-sample-lib', '0.0.0', {
         files: {
           'index.js': `export default function () {
         return 'From sample-lib';
@@ -21,7 +21,7 @@ appScenarios
     );
 
     project.addDependency(
-      new Project('@embroider/second-sample-lib', '0.0.0', {
+      new Project('@real_ate/fake-embroider-second-sample-lib', '0.0.0', {
         files: {
           'index.js': `export default function () {
         return 'From second-sample-lib';

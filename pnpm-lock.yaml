@@ -13,7 +13,7 @@ importers:
 
   .:
     devDependencies:
-      '@embroider/release':
+      '@real_ate/fake-embroider-release':
         specifier: workspace:*
         version: link:test-packages/release
       '@types/jest':
@@ -55,7 +55,7 @@ importers:
 
   packages/addon-dev:
     dependencies:
-      '@embroider/core':
+      '@real_ate/fake-embroider-core':
         specifier: workspace:^
         version: link:../core
       '@rollup/pluginutils':
@@ -83,12 +83,12 @@ importers:
         specifier: ^17.0.1
         version: 17.0.1
     devDependencies:
-      '@embroider/test-support':
-        specifier: workspace:*
-        version: link:../../test-packages/support
       '@glimmer/syntax':
         specifier: ^0.84.2
         version: 0.84.3
+      '@real_ate/fake-embroider-test-support':
+        specifier: workspace:*
+        version: link:../../test-packages/support
       '@types/fs-extra':
         specifier: ^9.0.12
         version: 9.0.12
@@ -110,7 +110,7 @@ importers:
 
   packages/addon-shim:
     dependencies:
-      '@embroider/shared-internals':
+      '@real_ate/fake-embroider-shared-internals':
         specifier: workspace:^
         version: link:../shared-internals
       broccoli-funnel:
@@ -142,7 +142,7 @@ importers:
         specifier: '8'
         version: 8.2.2(@babel/core@7.22.6)(webpack@5.78.0)
     devDependencies:
-      '@embroider/core':
+      '@real_ate/fake-embroider-core':
         specifier: workspace:^
         version: link:../core
 
@@ -169,7 +169,7 @@ importers:
       '@babel/traverse':
         specifier: ^7.14.5
         version: 7.14.5
-      '@embroider/macros':
+      '@real_ate/fake-embroider-macros':
         specifier: workspace:*
         version: link:../macros
       '@types/babel__code-frame':
@@ -272,21 +272,21 @@ importers:
         specifier: ^17.0.1
         version: 17.0.1
     devDependencies:
-      '@embroider/core':
-        specifier: workspace:^
-        version: link:../core
-      '@embroider/sample-transforms':
-        specifier: workspace:*
-        version: link:../../test-packages/sample-transforms
-      '@embroider/test-support':
-        specifier: workspace:*
-        version: link:../../test-packages/support
       '@glimmer/syntax':
         specifier: ^0.84.3
         version: 0.84.3
       '@glint/template':
         specifier: ^1.0.0
         version: 1.0.0
+      '@real_ate/fake-embroider-core':
+        specifier: workspace:^
+        version: link:../core
+      '@real_ate/fake-embroider-sample-transforms':
+        specifier: workspace:*
+        version: link:../../test-packages/sample-transforms
+      '@real_ate/fake-embroider-test-support':
+        specifier: workspace:*
+        version: link:../../test-packages/support
       '@types/babel__core':
         specifier: ^7.1.14
         version: 7.1.14
@@ -353,10 +353,10 @@ importers:
       '@babel/traverse':
         specifier: ^7.14.5
         version: 7.14.5
-      '@embroider/macros':
+      '@real_ate/fake-embroider-macros':
         specifier: workspace:*
         version: link:../macros
-      '@embroider/shared-internals':
+      '@real_ate/fake-embroider-shared-internals':
         specifier: workspace:*
         version: link:../shared-internals
       assert-never:
@@ -417,18 +417,18 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
     devDependencies:
-      '@embroider/sample-transforms':
-        specifier: workspace:*
-        version: link:../../test-packages/sample-transforms
-      '@embroider/test-support':
-        specifier: workspace:*
-        version: link:../../test-packages/support
       '@glimmer/syntax':
         specifier: ^0.84.2
         version: 0.84.3
       '@glint/template':
         specifier: ^1.0.0
         version: 1.0.0
+      '@real_ate/fake-embroider-sample-transforms':
+        specifier: workspace:*
+        version: link:../../test-packages/sample-transforms
+      '@real_ate/fake-embroider-test-support':
+        specifier: workspace:*
+        version: link:../../test-packages/support
       '@types/babel__core':
         specifier: ^7.1.14
         version: 7.1.14
@@ -471,7 +471,7 @@ importers:
 
   packages/hbs-loader:
     devDependencies:
-      '@embroider/core':
+      '@real_ate/fake-embroider-core':
         specifier: workspace:^
         version: link:../core
       '@types/node':
@@ -486,7 +486,7 @@ importers:
 
   packages/macros:
     dependencies:
-      '@embroider/shared-internals':
+      '@real_ate/fake-embroider-shared-internals':
         specifier: workspace:*
         version: link:../shared-internals
       assert-never:
@@ -520,15 +520,15 @@ importers:
       '@babel/traverse':
         specifier: ^7.14.5
         version: 7.14.5
-      '@embroider/core':
-        specifier: workspace:*
-        version: link:../core
-      '@embroider/test-support':
-        specifier: workspace:*
-        version: link:../../test-packages/support
       '@glint/template':
         specifier: ^1.0.0
         version: 1.0.0
+      '@real_ate/fake-embroider-core':
+        specifier: workspace:*
+        version: link:../core
+      '@real_ate/fake-embroider-test-support':
+        specifier: workspace:*
+        version: link:../../test-packages/support
       '@types/babel__core':
         specifier: ^7.1.14
         version: 7.1.14
@@ -571,7 +571,7 @@ importers:
       '@ember/test-waiters':
         specifier: ^3.0.2
         version: 3.0.2
-      '@embroider/addon-shim':
+      '@real_ate/fake-embroider-addon-shim':
         specifier: workspace:^
         version: link:../addon-shim
     devDependencies:
@@ -581,10 +581,10 @@ importers:
       '@babel/plugin-transform-typescript':
         specifier: ^7.8.7
         version: 7.22.5(@babel/core@7.22.6)
-      '@embroider/addon-dev':
+      '@real_ate/fake-embroider-addon-dev':
         specifier: workspace:^
         version: link:../addon-dev
-      '@embroider/macros':
+      '@real_ate/fake-embroider-macros':
         specifier: workspace:*
         version: link:../macros
       '@rollup/plugin-babel':
@@ -669,7 +669,7 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
     devDependencies:
-      '@embroider/test-support':
+      '@real_ate/fake-embroider-test-support':
         specifier: workspace:*
         version: link:../../test-packages/support
       '@types/babel__core':
@@ -718,13 +718,13 @@ importers:
         specifier: ^1.20.0
         version: 1.20.0
     devDependencies:
-      '@embroider/compat':
+      '@real_ate/fake-embroider-compat':
         specifier: workspace:^
         version: link:../compat
-      '@embroider/core':
+      '@real_ate/fake-embroider-core':
         specifier: workspace:^
         version: link:../core
-      '@embroider/webpack':
+      '@real_ate/fake-embroider-webpack':
         specifier: workspace:^
         version: link:../webpack
       '@types/lodash':
@@ -733,7 +733,7 @@ importers:
 
   packages/util:
     dependencies:
-      '@embroider/macros':
+      '@real_ate/fake-embroider-macros':
         specifier: workspace:^
         version: link:../macros
       broccoli-funnel:
@@ -758,21 +758,6 @@ importers:
       '@ember/test-helpers':
         specifier: ^2.9.1
         version: 2.9.1(@babel/core@7.22.6)(@glint/environment-ember-loose@1.0.0-beta.3)(@glint/template@1.0.0)(ember-source@4.6.0)
-      '@embroider/compat':
-        specifier: workspace:*
-        version: link:../compat
-      '@embroider/core':
-        specifier: workspace:*
-        version: link:../core
-      '@embroider/test-setup':
-        specifier: workspace:*
-        version: link:../test-setup
-      '@embroider/test-support':
-        specifier: workspace:*
-        version: link:../../test-packages/support
-      '@embroider/webpack':
-        specifier: workspace:*
-        version: link:../webpack
       '@glimmer/component':
         specifier: ^1.1.2
         version: 1.1.2(@babel/core@7.22.6)
@@ -785,6 +770,21 @@ importers:
       '@glint/template':
         specifier: ^1.0.0
         version: 1.0.0
+      '@real_ate/fake-embroider-compat':
+        specifier: workspace:*
+        version: link:../compat
+      '@real_ate/fake-embroider-core':
+        specifier: workspace:*
+        version: link:../core
+      '@real_ate/fake-embroider-test-setup':
+        specifier: workspace:*
+        version: link:../test-setup
+      '@real_ate/fake-embroider-test-support':
+        specifier: workspace:*
+        version: link:../../test-packages/support
+      '@real_ate/fake-embroider-webpack':
+        specifier: workspace:*
+        version: link:../webpack
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.59.5
         version: 5.59.5(@typescript-eslint/parser@5.59.5)(eslint@7.32.0)(typescript@5.1.6)
@@ -912,7 +912,7 @@ importers:
         specifier: ^5.7.0
         version: 5.7.0
     devDependencies:
-      '@embroider/core':
+      '@real_ate/fake-embroider-core':
         specifier: workspace:^
         version: link:../core
       '@types/debug':
@@ -936,13 +936,13 @@ importers:
       '@babel/core':
         specifier: ^7.14.5
         version: 7.22.6(supports-color@8.1.0)
-      '@embroider/babel-loader-8':
+      '@real_ate/fake-embroider-babel-loader-8':
         specifier: workspace:*
         version: link:../babel-loader-8
-      '@embroider/hbs-loader':
+      '@real_ate/fake-embroider-hbs-loader':
         specifier: workspace:*
         version: link:../hbs-loader
-      '@embroider/shared-internals':
+      '@real_ate/fake-embroider-shared-internals':
         specifier: workspace:*
         version: link:../shared-internals
       '@types/supports-color':
@@ -1000,7 +1000,7 @@ importers:
         specifier: ^3.0.4
         version: 3.0.4(webpack@5.78.0)
     devDependencies:
-      '@embroider/core':
+      '@real_ate/fake-embroider-core':
         specifier: workspace:^
         version: link:../core
       '@types/csso':
@@ -1097,7 +1097,7 @@ importers:
       '@ember/test-helpers':
         specifier: ^2.9.1
         version: 2.9.1(ember-source@3.26.0)
-      '@embroider/test-support':
+      '@real_ate/fake-embroider-test-support':
         specifier: workspace:*
         version: link:../support
       broccoli-asset-rev:
@@ -1310,15 +1310,15 @@ importers:
       '@ember/test-helpers':
         specifier: ^2.9.1
         version: 2.9.1(@babel/core@7.22.6)(@glint/environment-ember-loose@1.0.0-beta.3)(@glint/template@1.0.0)(ember-source@4.6.0)
-      '@embroider/test-setup':
-        specifier: workspace:^
-        version: link:../../packages/test-setup
       '@glimmer/component':
         specifier: ^1.1.2
         version: 1.1.2(@babel/core@7.22.6)
       '@glimmer/tracking':
         specifier: ^1.1.2
         version: 1.1.2
+      '@real_ate/fake-embroider-test-setup':
+        specifier: workspace:^
+        version: link:../../packages/test-setup
       babel-eslint:
         specifier: ^10.1.0
         version: 10.1.0(eslint@7.32.0)
@@ -1421,27 +1421,27 @@ importers:
       '@ember/test-helpers':
         specifier: ^2.9.1
         version: 2.9.1(@babel/core@7.22.6)(@glint/environment-ember-loose@1.0.0-beta.3)(@glint/template@1.0.0)(ember-source@4.6.0)
-      '@embroider/compat':
-        specifier: workspace:*
-        version: link:../../packages/compat
-      '@embroider/core':
-        specifier: workspace:*
-        version: link:../../packages/core
-      '@embroider/router':
-        specifier: workspace:*
-        version: link:../../packages/router
-      '@embroider/test-setup':
-        specifier: workspace:*
-        version: link:../../packages/test-setup
-      '@embroider/webpack':
-        specifier: workspace:*
-        version: link:../../packages/webpack
       '@glimmer/component':
         specifier: ^1.1.2
         version: 1.1.2(@babel/core@7.22.6)
       '@glimmer/tracking':
         specifier: ^1.1.2
         version: 1.1.2
+      '@real_ate/fake-embroider-compat':
+        specifier: workspace:*
+        version: link:../../packages/compat
+      '@real_ate/fake-embroider-core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@real_ate/fake-embroider-router':
+        specifier: workspace:*
+        version: link:../../packages/router
+      '@real_ate/fake-embroider-test-setup':
+        specifier: workspace:*
+        version: link:../../packages/test-setup
+      '@real_ate/fake-embroider-webpack':
+        specifier: workspace:*
+        version: link:../../packages/webpack
       babel-eslint:
         specifier: ^10.1.0
         version: 10.1.0(eslint@7.32.0)
@@ -1540,25 +1540,25 @@ importers:
 
   tests/scenarios:
     dependencies:
-      '@embroider/addon-dev':
+      '@real_ate/fake-embroider-addon-dev':
         specifier: workspace:*
         version: link:../../packages/addon-dev
-      '@embroider/compat':
+      '@real_ate/fake-embroider-compat':
         specifier: workspace:*
         version: link:../../packages/compat
-      '@embroider/core':
+      '@real_ate/fake-embroider-core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@embroider/sample-transforms':
+      '@real_ate/fake-embroider-sample-transforms':
         specifier: workspace:*
         version: link:../../test-packages/sample-transforms
-      '@embroider/shared-internals':
+      '@real_ate/fake-embroider-shared-internals':
         specifier: workspace:*
         version: link:../../packages/shared-internals
-      '@embroider/test-support':
+      '@real_ate/fake-embroider-test-support':
         specifier: workspace:*
         version: link:../../test-packages/support
-      '@embroider/webpack':
+      '@real_ate/fake-embroider-webpack':
         specifier: workspace:*
         version: link:../../packages/webpack
       '@types/qunit':
@@ -1640,16 +1640,16 @@ importers:
       '@ember/test-helpers-3':
         specifier: npm:@ember/test-helpers@^3.2.0
         version: /@ember/test-helpers@3.2.0(ember-source@3.28.11)
-      '@embroider/addon-shim':
+      '@real_ate/fake-embroider-addon-shim':
         specifier: workspace:*
         version: link:../../packages/addon-shim
-      '@embroider/macros':
+      '@real_ate/fake-embroider-macros':
         specifier: workspace:*
         version: link:../../packages/macros
-      '@embroider/router':
+      '@real_ate/fake-embroider-router':
         specifier: workspace:*
         version: link:../../packages/router
-      '@embroider/util':
+      '@real_ate/fake-embroider-util':
         specifier: workspace:*
         version: link:../../packages/util
       '@rollup/plugin-babel':
@@ -1775,21 +1775,6 @@ importers:
       '@ember/test-helpers':
         specifier: ^3.2.0
         version: 3.2.0(@glint/template@1.0.0)(ember-source@4.12.0)(webpack@5.78.0)
-      '@embroider/compat':
-        specifier: workspace:*
-        version: link:../../packages/compat
-      '@embroider/core':
-        specifier: workspace:*
-        version: link:../../packages/core
-      '@embroider/router':
-        specifier: workspace:*
-        version: link:../../packages/router
-      '@embroider/test-setup':
-        specifier: workspace:*
-        version: link:../../packages/test-setup
-      '@embroider/webpack':
-        specifier: workspace:*
-        version: link:../../packages/webpack
       '@glimmer/component':
         specifier: ^1.1.2
         version: 1.1.2(@babel/core@7.22.6)
@@ -1805,6 +1790,21 @@ importers:
       '@glint/template':
         specifier: ^1.0.0
         version: 1.0.0
+      '@real_ate/fake-embroider-compat':
+        specifier: workspace:*
+        version: link:../../packages/compat
+      '@real_ate/fake-embroider-core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@real_ate/fake-embroider-router':
+        specifier: workspace:*
+        version: link:../../packages/router
+      '@real_ate/fake-embroider-test-setup':
+        specifier: workspace:*
+        version: link:../../packages/test-setup
+      '@real_ate/fake-embroider-webpack':
+        specifier: workspace:*
+        version: link:../../packages/webpack
       '@tsconfig/ember':
         specifier: ^1.0.0
         version: 1.0.1
@@ -1907,7 +1907,7 @@ importers:
 
   tests/v2-addon-template:
     dependencies:
-      '@embroider/addon-shim':
+      '@real_ate/fake-embroider-addon-shim':
         specifier: workspace:*
         version: link:../../packages/addon-shim
 
@@ -1931,21 +1931,21 @@ importers:
       '@ember/test-helpers':
         specifier: ^3.0.3
         version: 3.2.0(ember-source@5.1.0)
-      '@embroider/compat':
-        specifier: workspace:*
-        version: link:../../packages/compat
-      '@embroider/core':
-        specifier: workspace:*
-        version: link:../../packages/core
-      '@embroider/vite':
-        specifier: workspace:*
-        version: link:../../packages/vite
       '@glimmer/component':
         specifier: ^1.1.2
         version: 1.1.2(@babel/core@7.22.6)
       '@glimmer/tracking':
         specifier: ^1.1.2
         version: 1.1.2
+      '@real_ate/fake-embroider-compat':
+        specifier: workspace:*
+        version: link:../../packages/compat
+      '@real_ate/fake-embroider-core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@real_ate/fake-embroider-vite':
+        specifier: workspace:*
+        version: link:../../packages/vite
       '@rollup/plugin-babel':
         specifier: ^5.3.1
         version: 5.3.1(@babel/core@7.22.6)(rollup@3.23.0)
@@ -9639,7 +9639,7 @@ packages:
       wordwrap: 0.0.3
 
   /bower-endpoint-parser@0.2.2:
-    resolution: {integrity: sha1-ALVlrb+rby01rd3pd+l5Yqy8s/Y=}
+    resolution: {integrity: sha512-YWZHhWkPdXtIfH3VRu3QIV95sa75O9vrQWBOHjexWCLBCTy5qJvRr36LXTqFwTchSXVlzy5piYJOjzHr7qhsNg==}
     engines: {node: '>=0.8.0'}
 
   /brace-expansion@1.1.11:

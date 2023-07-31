@@ -5,7 +5,7 @@ export default function error(path: NodePath, message: string) {
 }
 
 class MacroError extends Error {
-  type = '@embroider/macros Error';
+  type = '@real_ate/fake-embroider-macros Error';
   constructor(message: string) {
     super(message);
     this.name = 'MacroError';

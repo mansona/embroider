@@ -1,6 +1,6 @@
 import { Node } from 'broccoli-node-api';
 import { resolve } from 'path';
-import { locateEmbroiderWorkingDir, RewrittenPackageCache, Stage, WaitForTrees } from '@embroider/core';
+import { locateEmbroiderWorkingDir, RewrittenPackageCache, Stage, WaitForTrees } from '@real_ate/fake-embroider-core';
 import TreeSync from 'tree-sync';
 import CompatApp from './compat-app';
 import { convertLegacyAddons } from './standalone-addon-build';
@@ -29,7 +29,7 @@ export default class CompatAddons implements Stage {
   }
 
   get tree(): Node {
-    return new WaitForTrees({ addons: this.addons }, '@embroider/compat/addons', this.build.bind(this));
+    return new WaitForTrees({ addons: this.addons }, '@real_ate/fake-embroider-compat/addons', this.build.bind(this));
   }
 
   async ready(): Promise<{ outputPath: string }> {

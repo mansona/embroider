@@ -5,7 +5,7 @@ import {
   emberVirtualPeerDeps,
   packageName,
   templateCompilationModules,
-} from '@embroider/core';
+} from '@real_ate/fake-embroider-core';
 
 const compilationModules = new Set(
   templateCompilationModules.map((m) => m.module)

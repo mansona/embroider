@@ -8,7 +8,7 @@ import {
   Resolver,
   ResolverOptions,
   RewrittenPackageCache,
-} from '@embroider/core';
+} from '@real_ate/fake-embroider-core';
 import { Memoize } from 'typescript-memoize';
 import chalk from 'chalk';
 import jsdom from 'jsdom';
@@ -181,7 +181,9 @@ export class AuditResults {
         if (!nextPointer) {
           output.push(
             indent(
-              chalk.red(`couldn't figure out why this was included. Please file a bug against @embroider/compat.`),
+              chalk.red(
+                `couldn't figure out why this was included. Please file a bug against @real_ate/fake-embroider-compat.`
+              ),
               2
             )
           );
@@ -555,8 +557,8 @@ export class Audit {
           this.scheduleVisit(resolution.filename, fromFile);
           break;
         case 'not_found':
-          if (['@embroider/macros', '@ember/template-factory'].includes(dep)) {
-            // the audit process deliberately removes the @embroider/macros babel
+          if (['@real_ate/fake-embroider-macros', '@ember/template-factory'].includes(dep)) {
+            // the audit process deliberately removes the @real_ate/fake-embroider-macros babel
             // plugins, so the imports are still present and should be left alone.
             continue;
           }

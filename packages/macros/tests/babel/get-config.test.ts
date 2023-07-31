@@ -1,4 +1,4 @@
-import { allBabelVersions } from '@embroider/test-support';
+import { allBabelVersions } from '@real_ate/fake-embroider-test-support';
 import { makeBabelConfig, allModes, makeRunner } from './helpers';
 import { MacrosConfig } from '../../src/node';
 import { dirname } from 'path';
@@ -20,11 +20,11 @@ describe(`getConfig`, function () {
         // we have some tests that behave differently on files that appear to be
         // inside or outside of the macros package itself. Most tests don't care
         // and will default to "outside", with a notional path inside
-        // @embroider/core, which just happens to be one of our dependencies so
+        // @real_ate/fake-embroider-core, which just happens to be one of our dependencies so
         // we know it will be available.
-        filename = `${dirname(require.resolve('@embroider/core/package.json'))}/sample.js`;
+        filename = `${dirname(require.resolve('@real_ate/fake-embroider-core/package.json'))}/sample.js`;
 
-        config = MacrosConfig.for({}, dirname(require.resolve('@embroider/core/package.json')));
+        config = MacrosConfig.for({}, dirname(require.resolve('@real_ate/fake-embroider-core/package.json')));
         config.setOwnConfig(filename, {
           beverage: 'coffee',
         });
@@ -43,7 +43,7 @@ describe(`getConfig`, function () {
 
       test(`returns correct value for own package's config`, () => {
         let code = transform(`
-          import { getOwnConfig } from '@embroider/macros';
+          import { getOwnConfig } from '@real_ate/fake-embroider-macros';
           export default function() {
             return getOwnConfig();
           }
@@ -53,7 +53,7 @@ describe(`getConfig`, function () {
 
       test(`returns correct value for another package's config`, () => {
         let code = transform(`
-          import { getConfig } from '@embroider/macros';
+          import { getConfig } from '@real_ate/fake-embroider-macros';
           export default function() {
             return getConfig('@babel/core');
           }
@@ -63,7 +63,7 @@ describe(`getConfig`, function () {
 
       test(`returns undefined when there's no config but the package exists`, () => {
         let code = transform(`
-          import { getConfig } from '@embroider/macros';
+          import { getConfig } from '@real_ate/fake-embroider-macros';
           export default function() {
             return getConfig('qunit');
           }
@@ -73,7 +73,7 @@ describe(`getConfig`, function () {
 
       test(`returns undefined when there's no such package`, () => {
         let code = transform(`
-          import { getConfig } from '@embroider/macros';
+          import { getConfig } from '@real_ate/fake-embroider-macros';
           export default function() {
             return getConfig('not-a-thing');
           }
@@ -83,7 +83,7 @@ describe(`getConfig`, function () {
 
       buildTimeTest(`collapses property access`, () => {
         let code = transform(`
-          import { getOwnConfig } from '@embroider/macros';
+          import { getOwnConfig } from '@real_ate/fake-embroider-macros';
           export default function() {
             return doSomething(getOwnConfig().beverage);
           }
@@ -93,7 +93,7 @@ describe(`getConfig`, function () {
 
       buildTimeTest(`collapses computed property access`, () => {
         let code = transform(`
-          import { getOwnConfig } from '@embroider/macros';
+          import { getOwnConfig } from '@real_ate/fake-embroider-macros';
           export default function() {
             return doSomething(getOwnConfig()["beverage"]);
           }
@@ -103,7 +103,7 @@ describe(`getConfig`, function () {
 
       buildTimeTest(`collapses chained property access`, () => {
         let code = transform(`
-          import { getConfig } from '@embroider/macros';
+          import { getConfig } from '@real_ate/fake-embroider-macros';
           export default function() {
             return doSomething(getConfig('@babel/traverse').sizes[1].oz);
           }
@@ -113,7 +113,7 @@ describe(`getConfig`, function () {
 
       buildTimeTest(`collapses chained property access`, () => {
         let code = transform(`
-        import { getConfig } from '@embroider/macros';
+        import { getConfig } from '@real_ate/fake-embroider-macros';
 
         export default {
           test: function() {
@@ -128,7 +128,7 @@ describe(`getConfig`, function () {
       if (transform.babelMajorVersion === 7) {
         buildTimeTest(`collapses nullish coalescing, not null case`, () => {
           let code = transform(`
-          import { getConfig } from '@embroider/macros';
+          import { getConfig } from '@real_ate/fake-embroider-macros';
           export default function() {
             return doSomething(getConfig('@babel/traverse')?.sizes?.[1]?.oz);
           }
@@ -138,7 +138,7 @@ describe(`getConfig`, function () {
 
         buildTimeTest(`collapses nullish coalescing, nullish case`, () => {
           let code = transform(`
-            import { getConfig } from '@embroider/macros';
+            import { getConfig } from '@real_ate/fake-embroider-macros';
             export default function() {
               return doSomething(getConfig('not-a-real-package')?.sizes?.[1]?.oz);
             }
@@ -148,7 +148,7 @@ describe(`getConfig`, function () {
 
         runTimeTest(`runtime getConfig is still present in runtime mode when using optional chaining`, () => {
           let code = transform(`
-            import { getConfig } from '@embroider/macros';
+            import { getConfig } from '@real_ate/fake-embroider-macros';
             export default function() {
               return doSomething(getConfig('not-a-real-package')?.sizes?.[1]?.oz);
             }
@@ -167,7 +167,7 @@ describe(`getConfig`, function () {
           }
         `);
         expect(code).toMatch(/beverage/);
-        let coreRoot = dirname(require.resolve('@embroider/core/package.json'));
+        let coreRoot = dirname(require.resolve('@real_ate/fake-embroider-core/package.json'));
         expect(run(code, { filename }).packages[coreRoot].beverage).toEqual('coffee');
       });
 
@@ -181,7 +181,7 @@ describe(`getConfig`, function () {
 
       test(`Preserves necessary side effects`, () => {
         let code = transform(`
-          import { getOwnConfig } from '@embroider/macros';
+          import { getOwnConfig } from '@real_ate/fake-embroider-macros';
           export default function() {
             let config;
             if ((config = getOwnConfig()) !== 0) {
@@ -194,7 +194,7 @@ describe(`getConfig`, function () {
 
       test(`Accesses global config`, () => {
         let code = transform(`
-          import { getGlobalConfig } from '@embroider/macros';
+          import { getGlobalConfig } from '@real_ate/fake-embroider-macros';
           export default function() {
             return getGlobalConfig()['something-very-global'].year;
           }

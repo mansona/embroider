@@ -1,4 +1,4 @@
-import { getOrCreate, Resolver } from '@embroider/core';
+import { getOrCreate, Resolver } from '@real_ate/fake-embroider-core';
 import { resolve } from 'path';
 import { satisfies } from 'semver';
 

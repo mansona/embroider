@@ -1,5 +1,5 @@
 import { makeRunner, makeBabelConfig, allModes } from './helpers';
-import { allBabelVersions } from '@embroider/test-support';
+import { allBabelVersions } from '@real_ate/fake-embroider-test-support';
 import { Project } from 'scenario-tester';
 import { MacrosConfig } from '../../src/node';
 import { join } from 'path';
@@ -37,14 +37,14 @@ describe('macroCondition', function () {
         config.setConfig(join(project.baseDir, 'sample.js'), 'qunit', {
           items: [{ approved: true, other: null, size: 2.3 }],
         });
-        config.setGlobalConfig(__filename, '@embroider/macros', { isTesting: true });
+        config.setGlobalConfig(__filename, '@real_ate/fake-embroider-macros', { isTesting: true });
         applyMode(config);
         config.finalize();
       });
 
       test('if selects consequent, drops alternate', () => {
         let code = transform(`
-      import { macroCondition } from '@embroider/macros';
+      import { macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         if (macroCondition(true)) {
           return 'alpha';
@@ -63,7 +63,7 @@ describe('macroCondition', function () {
 
       runTimeTest('given runtime implementation, it evaluates consequent block', () => {
         let code = transform(`
-      import { isTesting, macroCondition } from '@embroider/macros';
+      import { isTesting, macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         if (macroCondition(isTesting())) {
           return 'alpha';
@@ -82,7 +82,7 @@ describe('macroCondition', function () {
 
       test('non-block if selects consequent', () => {
         let code = transform(`
-      import { macroCondition } from '@embroider/macros';
+      import { macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         if (macroCondition(true))
           return 'alpha';
@@ -98,7 +98,7 @@ describe('macroCondition', function () {
 
       test('if selects alternate, drops consequent', () => {
         let code = transform(`
-      import { macroCondition } from '@embroider/macros';
+      import { macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         if (macroCondition(false)) {
           return 'alpha';
@@ -117,7 +117,7 @@ describe('macroCondition', function () {
 
       test('ternary selects consequent, drops alternate', () => {
         let code = transform(`
-      import { macroCondition } from '@embroider/macros';
+      import { macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         return macroCondition(true) ? 'alpha' : 'beta';
       }
@@ -132,7 +132,7 @@ describe('macroCondition', function () {
 
       runTimeTest('given runtime implementation, ternary evaluates to consequent', () => {
         let code = transform(`
-      import { isTesting, macroCondition } from '@embroider/macros';
+      import { isTesting, macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         return macroCondition(isTesting()) ? 'alpha' : 'beta';
       }
@@ -147,7 +147,7 @@ describe('macroCondition', function () {
 
       test('ternary selects alternate, drops consequent', () => {
         let code = transform(`
-      import { macroCondition } from '@embroider/macros';
+      import { macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         return macroCondition(false) ? 'alpha' : 'beta';
       }
@@ -162,7 +162,7 @@ describe('macroCondition', function () {
 
       test('if selects consequent, no alternate', () => {
         let code = transform(`
-      import { macroCondition } from '@embroider/macros';
+      import { macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         if (macroCondition(true)) {
           return 'alpha';
@@ -177,7 +177,7 @@ describe('macroCondition', function () {
 
       test('if drops consequent, no alternate', () => {
         let code = transform(`
-      import { macroCondition } from '@embroider/macros';
+      import { macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         if (macroCondition(false)) {
           return 'alpha';
@@ -189,7 +189,7 @@ describe('macroCondition', function () {
 
       test('else if consequent', () => {
         let code = transform(`
-      import { macroCondition } from '@embroider/macros';
+      import { macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         if (macroCondition(false)) {
           return 'alpha';
@@ -207,7 +207,7 @@ describe('macroCondition', function () {
 
       test('else if alternate', () => {
         let code = transform(`
-      import { macroCondition } from '@embroider/macros';
+      import { macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         if (macroCondition(false)) {
           return 'alpha';
@@ -225,7 +225,7 @@ describe('macroCondition', function () {
 
       test('else if with indeterminate predecessor, alternate', () => {
         let code = transform(`
-      import { macroCondition } from '@embroider/macros';
+      import { macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         if (window.x) {
           return 'alpha';
@@ -243,7 +243,7 @@ describe('macroCondition', function () {
 
       test('else if with indeterminate predecessor, consequent', () => {
         let code = transform(`
-      import { macroCondition } from '@embroider/macros';
+      import { macroCondition } from '@real_ate/fake-embroider-macros';
       export default function() {
         if (window.x) {
           return 'alpha';
@@ -262,7 +262,7 @@ describe('macroCondition', function () {
       test('non-static predicate refuses to build', () => {
         expect(() => {
           transform(`
-        import { macroCondition } from '@embroider/macros';
+        import { macroCondition } from '@real_ate/fake-embroider-macros';
         import other from 'other';
         export default function() {
           return macroCondition(other) ? 1 : 2;
@@ -274,7 +274,7 @@ describe('macroCondition', function () {
       test('wrong arity refuses to build', () => {
         expect(() => {
           transform(`
-        import { macroCondition } from '@embroider/macros';
+        import { macroCondition } from '@real_ate/fake-embroider-macros';
         export default function() {
           return macroCondition() ? 1 : 2;
         }
@@ -285,7 +285,7 @@ describe('macroCondition', function () {
       test('usage inside expression refuses to build', () => {
         expect(() => {
           transform(`
-        import { macroCondition } from '@embroider/macros';
+        import { macroCondition } from '@real_ate/fake-embroider-macros';
         export default function() {
           return macroCondition(true);
         }
@@ -295,7 +295,7 @@ describe('macroCondition', function () {
 
       test('composes with other macros using ternary', () => {
         let code = transform(`
-      import { macroCondition, dependencySatisfies } from '@embroider/macros';
+      import { macroCondition, dependencySatisfies } from '@real_ate/fake-embroider-macros';
       export default function() {
         return macroCondition(dependencySatisfies('qunit', '*')) ? 'alpha' : 'beta';
       }
@@ -306,7 +306,7 @@ describe('macroCondition', function () {
 
       runTimeTest('given runtime implementation, it composes with other macros using ternary', () => {
         let code = transform(`
-      import { isTesting, macroCondition, dependencySatisfies } from '@embroider/macros';
+      import { isTesting, macroCondition, dependencySatisfies } from '@real_ate/fake-embroider-macros';
       export default function() {
         return macroCondition(isTesting() && dependencySatisfies('qunit', '*')) ? 'alpha' : 'beta';
       }
@@ -317,7 +317,7 @@ describe('macroCondition', function () {
 
       test('composes with other macros using if', () => {
         let code = transform(`
-      import { macroCondition, dependencySatisfies } from '@embroider/macros';
+      import { macroCondition, dependencySatisfies } from '@real_ate/fake-embroider-macros';
       export default function() {
         let qunit;
         if (macroCondition(dependencySatisfies('qunit', '*'))) {
@@ -340,7 +340,7 @@ describe('macroCondition', function () {
 
       runTimeTest('given runtime implementation, it can evaluate boolean expressions', () => {
         let code = transform(`
-      import { isTesting, macroCondition, dependencySatisfies } from '@embroider/macros';
+      import { isTesting, macroCondition, dependencySatisfies } from '@real_ate/fake-embroider-macros';
       export default function() {
         return macroCondition(isTesting() && (2 > 1) && dependencySatisfies('qunit', '*')) ? 'alpha' : 'beta';
       }
@@ -351,7 +351,7 @@ describe('macroCondition', function () {
 
       test('can evaluate boolean expressions', () => {
         let code = transform(`
-      import { macroCondition, dependencySatisfies } from '@embroider/macros';
+      import { macroCondition, dependencySatisfies } from '@real_ate/fake-embroider-macros';
       export default function() {
         return macroCondition((2 > 1) && dependencySatisfies('qunit', '*')) ? 'alpha' : 'beta';
       }
@@ -362,7 +362,7 @@ describe('macroCondition', function () {
 
       buildTimeTest('can see booleans inside getConfig', () => {
         let code = transform(`
-      import { macroCondition, getConfig } from '@embroider/macros';
+      import { macroCondition, getConfig } from '@real_ate/fake-embroider-macros';
       export default function() {
         // this deliberately chains three kinds of property access syntax: by
         // identifier, by numeric index, and by string literal.
@@ -375,7 +375,7 @@ describe('macroCondition', function () {
 
       runTimeTest('can see booleans inside getConfig', () => {
         let code = transform(`
-      import { macroCondition, getConfig } from '@embroider/macros';
+      import { macroCondition, getConfig } from '@real_ate/fake-embroider-macros';
       export default function() {
         // this deliberately chains three kinds of property access syntax: by
         // identifier, by numeric index, and by string literal.
@@ -389,7 +389,7 @@ describe('macroCondition', function () {
       if (transform.babelMajorVersion === 7) {
         buildTimeTest('can be used as class field initializer', () => {
           let code = transform(`
-            import { macroCondition, getConfig } from '@embroider/macros';
+            import { macroCondition, getConfig } from '@real_ate/fake-embroider-macros';
             class QUnitTest {
               version = macroCondition(getConfig('qunit').items[0]["other"]) ? 'alpha' : 'beta';
             }
@@ -404,7 +404,7 @@ describe('macroCondition', function () {
 
         runTimeTest('given runtime implementation, it can be used as class field initializer', () => {
           let code = transform(`
-            import { isTesting, macroCondition, getConfig } from '@embroider/macros';
+            import { isTesting, macroCondition, getConfig } from '@real_ate/fake-embroider-macros';
             class QUnitTest {
               version = macroCondition(isTesting() && getConfig('qunit').items[0]["other"]) ? 'alpha' : 'beta';
             }

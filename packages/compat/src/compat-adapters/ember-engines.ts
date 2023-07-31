@@ -1,6 +1,6 @@
 import V1Addon from '../v1-addon';
 import Filter from 'broccoli-persistent-filter';
-import { AddonMeta } from '@embroider/core';
+import { AddonMeta } from '@real_ate/fake-embroider-core';
 
 class Awk extends Filter {
   search: string;

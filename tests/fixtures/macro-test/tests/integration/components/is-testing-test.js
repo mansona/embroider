@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { isTesting } from '@embroider/macros';
+import { isTesting } from '@real_ate/fake-embroider-macros';
 
 module('Integration | Macro | isTesting', function(hooks) {
   setupRenderingTest(hooks);

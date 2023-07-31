@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { visit, currentURL } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-import { dependencySatisfies } from '@embroider/macros';
+import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
 
 function arrayOfCSSRules(styleSheets, cssSelector, cssProperty) {
   let values = [];

@@ -27,7 +27,7 @@ appScenarios
         {
           "plugins": [
             "@babel/plugin-transform-typescript",
-            "@embroider/addon-dev/template-colocation-plugin",
+            "@real_ate/fake-embroider-addon-dev/template-colocation-plugin",
             ["@babel/plugin-proposal-decorators", { "legacy": true }],
             ["@babel/plugin-transform-class-properties"]
           ]
@@ -69,7 +69,7 @@ appScenarios
       'rollup.config.mjs': `
 
       import typescript from '@rollup/plugin-typescript';
-      import { Addon } from '@embroider/addon-dev/rollup';
+      import { Addon } from '@real_ate/fake-embroider-addon-dev/rollup';
       import { babel } from '@rollup/plugin-babel';
 
       const addon = new Addon({
@@ -170,8 +170,8 @@ appScenarios
       },
     });
 
-    addon.linkDependency('@embroider/addon-shim', { baseDir: __dirname });
-    addon.linkDependency('@embroider/addon-dev', { baseDir: __dirname });
+    addon.linkDependency('@real_ate/fake-embroider-addon-shim', { baseDir: __dirname });
+    addon.linkDependency('@real_ate/fake-embroider-addon-dev', { baseDir: __dirname });
     addon.linkDependency('@babel/runtime', { baseDir: __dirname });
     addon.linkDevDependency('@babel/core', { baseDir: __dirname });
     addon.linkDevDependency('@babel/plugin-transform-typescript', { baseDir: __dirname });

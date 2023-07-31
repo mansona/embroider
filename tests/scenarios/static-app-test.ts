@@ -9,7 +9,7 @@ appScenarios
   .map('static-app', project => {
     project.linkDevDependency('bootstrap', { baseDir: __dirname });
     project.addDevDependency(emberBootstrap());
-    project.linkDevDependency('@embroider/macros', { baseDir: __dirname });
+    project.linkDevDependency('@real_ate/fake-embroider-macros', { baseDir: __dirname });
     project.linkDevDependency('ember-composable-helpers', { baseDir: __dirname });
     project.linkDevDependency('ember-modifier', { baseDir: __dirname });
 
@@ -171,7 +171,7 @@ appScenarios
             import { module, test } from 'qunit';
             import { visit } from '@ember/test-helpers';
             import { setupApplicationTest } from 'ember-qunit';
-            import { getOwnConfig } from '@embroider/macros';
+            import { getOwnConfig } from '@real_ate/fake-embroider-macros';
 
             module('Acceptance | components-example', function(hooks) {
               setupApplicationTest(hooks);
@@ -200,7 +200,7 @@ appScenarios
             import { module, test } from 'qunit';
             import { visit } from '@ember/test-helpers';
             import { setupApplicationTest } from 'ember-qunit';
-            import { getOwnConfig, dependencySatisfies } from '@embroider/macros';
+            import { getOwnConfig, dependencySatisfies } from '@real_ate/fake-embroider-macros';
 
             module('Acceptance | helpers-example', function(hooks) {
               setupApplicationTest(hooks);
@@ -229,7 +229,7 @@ appScenarios
             import { module, test } from 'qunit';
             import { visit } from '@ember/test-helpers';
             import { setupApplicationTest } from 'ember-qunit';
-            import { getOwnConfig } from '@embroider/macros';
+            import { getOwnConfig } from '@real_ate/fake-embroider-macros';
 
             module('Acceptance | macros-example', function(hooks) {
               setupApplicationTest(hooks);
@@ -298,7 +298,7 @@ appScenarios
         unit: {
           'missing-import-sync-renamed-test.js': `
             import { module, test } from 'qunit';
-            import { importSync as i } from '@embroider/macros';
+            import { importSync as i } from '@real_ate/fake-embroider-macros';
 
             module('Unit | missing modules referenced by i which was renamed from importSync', function() {
               test('it works', function(assert) {
@@ -316,7 +316,7 @@ appScenarios
           `,
           'missing-import-test.js': `
             import { module, test } from 'qunit';
-            import { importSync } from '@embroider/macros';
+            import { importSync } from '@real_ate/fake-embroider-macros';
 
             module('Unit | missing modules referenced by importSync', function() {
               test('it works', function(assert) {
@@ -338,7 +338,7 @@ appScenarios
         'use strict';
 
         const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-        const { MacrosConfig } = require('@embroider/macros/src/node');
+        const { MacrosConfig } = require('@real_ate/fake-embroider-macros/src/node');
 
         module.exports = function (defaults) {
           let app = new EmberApp(defaults, {
@@ -356,9 +356,9 @@ appScenarios
             return app.toTree();
           }
 
-          const { compatBuild, recommendedOptions } = require('@embroider/compat');
+          const { compatBuild, recommendedOptions } = require('@real_ate/fake-embroider-compat');
 
-          const Webpack = require('@embroider/webpack').Webpack;
+          const Webpack = require('@real_ate/fake-embroider-webpack').Webpack;
           return compatBuild(app, Webpack, {
             ...recommendedOptions.optimized,
             packageRules: [

@@ -2,7 +2,7 @@ import {
   macroCondition,
   dependencySatisfies,
   importSync,
-} from '@embroider/macros';
+} from '@real_ate/fake-embroider-macros';
 
 let runtime;
 
@@ -49,7 +49,7 @@ function runtimeResolver(owner) {
   }
 
   throw new Error(
-    `@embroider/util couldn't locate the runtime resolver on this ember version`
+    `@real_ate/fake-embroider-util couldn't locate the runtime resolver on this ember version`
   );
 }
 

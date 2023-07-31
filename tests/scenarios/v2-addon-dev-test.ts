@@ -3,7 +3,7 @@ import { appScenarios, baseV2Addon } from './scenarios';
 import { PreparedApp } from 'scenario-tester';
 import QUnit from 'qunit';
 import merge from 'lodash/merge';
-import { ExpectFile, expectFilesAt } from '@embroider/test-support/file-assertions/qunit';
+import { ExpectFile, expectFilesAt } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
 
 const { module: Qmodule, test } = QUnit;
 
@@ -28,7 +28,7 @@ appScenarios
       'babel.config.json': `
         {
           "plugins": [
-            "@embroider/addon-dev/template-colocation-plugin",
+            "@real_ate/fake-embroider-addon-dev/template-colocation-plugin",
             "@babel/plugin-transform-class-static-block",
             ["babel-plugin-ember-template-compilation", {
               targetFormat: 'hbs',
@@ -44,7 +44,7 @@ appScenarios
       `,
       'rollup.config.mjs': `
         import { babel } from '@rollup/plugin-babel';
-        import { Addon } from '@embroider/addon-dev/rollup';
+        import { Addon } from '@real_ate/fake-embroider-addon-dev/rollup';
 
         const addon = new Addon({
           srcDir: 'src',
@@ -144,8 +144,8 @@ appScenarios
       },
     });
 
-    addon.linkDependency('@embroider/addon-shim', { baseDir: __dirname });
-    addon.linkDependency('@embroider/addon-dev', { baseDir: __dirname });
+    addon.linkDependency('@real_ate/fake-embroider-addon-shim', { baseDir: __dirname });
+    addon.linkDependency('@real_ate/fake-embroider-addon-dev', { baseDir: __dirname });
     addon.linkDependency('babel-plugin-ember-template-compilation', { baseDir: __dirname });
     addon.linkDevDependency('@babel/core', { baseDir: __dirname });
     addon.linkDevDependency('@babel/plugin-transform-class-static-block', { baseDir: __dirname });

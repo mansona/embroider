@@ -1,5 +1,5 @@
 import { helper } from '@ember/component/helper';
-import { getOwnConfig } from '@embroider/macros';
+import { getOwnConfig } from '@real_ate/fake-embroider-macros';
 
 export function reflectConfig(/*params, hash*/) {
   return getOwnConfig();

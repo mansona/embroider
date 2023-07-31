@@ -76,7 +76,7 @@ export default class extends V1Addon {
     return super.invokeOriginalTreeFor(name, opts);
   }
 
-  // Our addon tree is all of the "packages" we share. @embroider/compat already
+  // Our addon tree is all of the "packages" we share. @real_ate/fake-embroider-compat already
   // supports that pattern of emitting modules into other package's namespaces.
   private customAddonTree() {
     let packages = buildFunnel(this.rootTree, {

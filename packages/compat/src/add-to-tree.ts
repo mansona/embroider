@@ -4,7 +4,7 @@ import { Funnel } from 'broccoli-funnel';
 export default class AddToTree extends Funnel {
   constructor(combinedVendor: Node, private hook: (outputPath: string) => Promise<void> | void) {
     super(combinedVendor, {
-      annotation: '@embroider/compat/synthvendor',
+      annotation: '@real_ate/fake-embroider-compat/synthvendor',
     });
   }
   shouldLinkRoots() {

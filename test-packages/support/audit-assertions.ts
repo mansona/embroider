@@ -7,7 +7,7 @@ import { sortBy } from 'lodash';
 import { getRewrittenLocation } from './rewritten-path';
 
 /*
-  The audit tool in @embroider/compat can be used directly to tell you about
+  The audit tool in @real_ate/fake-embroider-compat can be used directly to tell you about
   potential problems in an app that is trying to adopt embroider. But we also
   take advantage of the audit tool within our test suite to help us analyze
   Embroider's output.

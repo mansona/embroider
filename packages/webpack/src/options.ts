@@ -13,7 +13,7 @@ export interface BabelLoaderOptions {
 export interface Options {
   // This allows you to extend the webpack config in arbitrary ways. Your
   // changes will get applied on top of the defaults provided by
-  // @embroider/webpack.
+  // @real_ate/fake-embroider-webpack.
   webpackConfig: Configuration;
 
   // the base public URL for your assets in production. Use this when you want

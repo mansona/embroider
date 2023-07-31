@@ -4,7 +4,7 @@ import {
   RewrittenPackageIndex,
   summarizePeerDepViolations,
   validatePeerDependencies,
-} from '@embroider/core';
+} from '@real_ate/fake-embroider-core';
 import V1InstanceCache from './v1-instance-cache';
 import buildCompatAddon from './build-compat-addon';
 import { Funnel } from 'broccoli-funnel';
@@ -52,10 +52,10 @@ ${summarizePeerDepViolations(violations)}`
   return broccoliMergeTrees([
     ...exteriorTrees,
     new Funnel(compatApp.synthesizeStylesPackage(interiorTrees), {
-      destDir: '@embroider/synthesized-styles',
+      destDir: '@real_ate/fake-embroider-synthesized-styles',
     }),
     new Funnel(compatApp.synthesizeVendorPackage(interiorTrees), {
-      destDir: '@embroider/synthesized-vendor',
+      destDir: '@real_ate/fake-embroider-synthesized-vendor',
     }),
     writeFile('index.json', JSON.stringify(index, null, 2)),
   ]);

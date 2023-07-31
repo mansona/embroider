@@ -1,5 +1,5 @@
-import { expectRewrittenFilesAt, ExpectFile } from '@embroider/test-support/file-assertions/qunit';
-import { throwOnWarnings } from '@embroider/core';
+import { expectRewrittenFilesAt, ExpectFile } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
 import { PreparedApp } from 'scenario-tester';
 import { join } from 'path';
 import { appScenarios, baseAddon } from './scenarios';
@@ -50,17 +50,21 @@ appScenarios
         });
       });
       test('destDir puts vendor files into public assets', function () {
-        expectFile('./node_modules/.embroider/rewritten-packages/@embroider/synthesized-vendor/package.json')
+        expectFile(
+          './node_modules/.embroider/rewritten-packages/@real_ate/fake-embroider-synthesized-vendor/package.json'
+        )
           .json()
           .get(['ember-addon', 'public-assets', './vendor/some-font.ttf'])
           .equals('fonts/some-font.ttf');
         expectFile(
-          './node_modules/.embroider/rewritten-packages/@embroider/synthesized-vendor/vendor/some-font.ttf'
+          './node_modules/.embroider/rewritten-packages/@real_ate/fake-embroider-synthesized-vendor/vendor/some-font.ttf'
         ).exists();
       });
 
       test('handle non-transformed node_module with explicit outputFile', function () {
-        expectFile('./node_modules/.embroider/rewritten-packages/@embroider/synthesized-vendor/package.json')
+        expectFile(
+          './node_modules/.embroider/rewritten-packages/@real_ate/fake-embroider-synthesized-vendor/package.json'
+        )
           .json()
           .get([
             'ember-addon',

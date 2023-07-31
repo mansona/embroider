@@ -1,6 +1,9 @@
 import { assert, deprecate } from '@ember/debug';
 import { getOwner } from '@ember/application';
-import { dependencySatisfies, macroCondition } from '@embroider/macros';
+import {
+  dependencySatisfies,
+  macroCondition,
+} from '@real_ate/fake-embroider-macros';
 import {
   isCurriedComponentDefinition,
   lookupCurriedComponentDefinition,
@@ -33,7 +36,7 @@ function handleString(name, thingWithOwner) {
       id: 'ensure-safe-component.string',
       url: 'https://github.com/embroider-build/embroider/blob/main/docs/replacing-component-helper.md#when-youre-passing-a-component-to-someone-else',
       until: 'embroider',
-      for: '@embroider/util',
+      for: '@real_ate/fake-embroider-util',
       since: '0.27.0',
     }
   );

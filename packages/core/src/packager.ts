@@ -1,4 +1,4 @@
-import { AppMeta, tmpdir } from '@embroider/shared-internals';
+import { AppMeta, tmpdir } from '@real_ate/fake-embroider-shared-internals';
 import { readFileSync } from 'fs-extra';
 import { cloneDeep } from 'lodash';
 import { join } from 'path';

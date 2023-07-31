@@ -6,31 +6,31 @@ import { merge } from 'lodash';
 const { module: Qmodule, test } = QUnit;
 
 let routerApp = tsAppScenarios.map('router', project => {
-  project.linkDevDependency('@embroider/router', { baseDir: __dirname });
+  project.linkDevDependency('@real_ate/fake-embroider-router', { baseDir: __dirname });
 
   // not strictly needed in the embroider case, but needed in the classic
   // case.
-  project.linkDevDependency('@embroider/macros', { baseDir: __dirname });
+  project.linkDevDependency('@real_ate/fake-embroider-macros', { baseDir: __dirname });
 
   merge(project.files, {
     'ember-cli-build.js': `
         'use strict';
 
         const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-        const { maybeEmbroider } = require('@embroider/test-setup');
-        
+        const { maybeEmbroider } = require('@real_ate/fake-embroider-test-setup');
+
         module.exports = function (defaults) {
           let app = new EmberApp(defaults, {
             'ember-cli-babel': {
               enableTypeScriptTransform: true,
             },
-            '@embroider/macros': {
+            '@real_ate/fake-embroider-macros': {
               setOwnConfig: {
                 expectClassic: process.env.EMBROIDER_TEST_SETUP_FORCE === 'classic'
               }
             }
           });
-        
+
           return maybeEmbroider(app, {
             staticAddonTestSupportTrees: true,
             staticAddonTrees: true,
@@ -99,7 +99,7 @@ let routerApp = tsAppScenarios.map('router', project => {
         },
       },
       'router.ts': `
-          import EmberRouter from '@embroider/router';
+          import EmberRouter from '@real_ate/fake-embroider-router';
           import config from 'ts-app-template/config/environment';
 
           export default class Router extends EmberRouter {
@@ -122,7 +122,7 @@ let routerApp = tsAppScenarios.map('router', project => {
           import { visit } from '@ember/test-helpers';
           import { setupApplicationTest } from 'ember-qunit';
           import ENV from 'ts-app-template/config/environment';
-          import { getGlobalConfig, getOwnConfig } from '@embroider/macros';
+          import { getGlobalConfig, getOwnConfig } from '@real_ate/fake-embroider-macros';
 
           /* global requirejs */
 
@@ -188,8 +188,8 @@ let routerApp = tsAppScenarios.map('router', project => {
             }
 
             if (getOwnConfig<{ expectClassic: boolean }>().expectClassic) {
-              test('classic builds can not see @embroider/core config', async function (assert) {
-                let config = getGlobalConfig<{ '@embroider/core'?: { active: true} }>()['@embroider/core'];
+              test('classic builds can not see @real_ate/fake-embroider-core config', async function (assert) {
+                let config = getGlobalConfig<{ '@real_ate/fake-embroider-core'?: { active: true} }>()['@real_ate/fake-embroider-core'];
                 assert.strictEqual(
                   config,
                   undefined,
@@ -197,9 +197,9 @@ let routerApp = tsAppScenarios.map('router', project => {
                 );
               });
             } else {
-              test('can see @embroider/core config', async function (assert) {
-                let config = getGlobalConfig<{ '@embroider/core'?: { active: true} }>()['@embroider/core'];
-                assert.true(config!.active, 'expected to see active @embroider/core');
+              test('can see @real_ate/fake-embroider-core config', async function (assert) {
+                let config = getGlobalConfig<{ '@real_ate/fake-embroider-core'?: { active: true} }>()['@real_ate/fake-embroider-core'];
+                assert.true(config!.active, 'expected to see active @real_ate/fake-embroider-core');
               });
             }
 
@@ -219,7 +219,7 @@ let routerApp = tsAppScenarios.map('router', project => {
               );
             });
           });
-                  
+
           `,
       },
     },

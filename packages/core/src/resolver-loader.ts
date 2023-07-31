@@ -1,6 +1,6 @@
 import { readJSONSync } from 'fs-extra';
 import { Resolver, Options } from './module-resolver';
-import { locateEmbroiderWorkingDir } from '@embroider/shared-internals';
+import { locateEmbroiderWorkingDir } from '@real_ate/fake-embroider-shared-internals';
 import { join } from 'path';
 import { watch as fsWatch, FSWatcher } from 'fs';
 

@@ -32,9 +32,9 @@ appScenarios
         'example-component.css': '/* not empty */ h1 { color: red }',
       },
       'import-from-npm.js': `
-        export default async function() { 
+        export default async function() {
           let { message } = await import('third-party');
-          return message() 
+          return message()
         }
         `,
     });
@@ -106,7 +106,7 @@ appScenarios
             import { module, test } from 'qunit';
             import { visit } from '@ember/test-helpers';
             import { setupApplicationTest } from 'ember-qunit';
-            import { getOwnConfig } from '@embroider/macros';
+            import { getOwnConfig } from '@real_ate/fake-embroider-macros';
 
             module('Acceptance | index', function(hooks) {
               setupApplicationTest(hooks);

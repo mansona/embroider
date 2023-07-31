@@ -1,4 +1,4 @@
-import { ResolverLoader, virtualContent } from '@embroider/core';
+import { ResolverLoader, virtualContent } from '@real_ate/fake-embroider-core';
 import { LoaderContext } from 'webpack';
 
 let resolverLoader: ResolverLoader | undefined;
@@ -16,11 +16,11 @@ export default function virtualLoader(this: LoaderContext<unknown>) {
     let filename = params.get('f');
     let appRoot = params.get('a');
     if (!filename || !appRoot) {
-      throw new Error(`bug in @embroider/webpack virtual loader, cannot locate params in ${this.query}`);
+      throw new Error(`bug in @real_ate/fake-embroider-webpack virtual loader, cannot locate params in ${this.query}`);
     }
     let { resolver } = setup(appRoot);
     this.resourcePath = filename;
     return virtualContent(filename, resolver);
   }
-  throw new Error(`@embroider/webpack/src/virtual-loader received unexpected request: ${this.query}`);
+  throw new Error(`@real_ate/fake-embroider-webpack/src/virtual-loader received unexpected request: ${this.query}`);
 }

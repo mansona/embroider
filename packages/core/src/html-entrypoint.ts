@@ -1,4 +1,4 @@
-import { getOrCreate } from '@embroider/shared-internals';
+import { getOrCreate } from '@real_ate/fake-embroider-shared-internals';
 import { readFileSync } from 'fs-extra';
 import { join } from 'path';
 import { JSDOM } from 'jsdom';

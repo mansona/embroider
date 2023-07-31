@@ -2,10 +2,10 @@ import { PreparedApp } from 'scenario-tester';
 import { appScenarios, renameApp } from './scenarios';
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { ExpectFile, expectFilesAt } from '@embroider/test-support/file-assertions/qunit';
-import { throwOnWarnings } from '@embroider/core';
+import { ExpectFile, expectFilesAt } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
 import merge from 'lodash/merge';
-import { setupAuditTest } from '@embroider/test-support/audit-assertions';
+import { setupAuditTest } from '@real_ate/fake-embroider-test-support/audit-assertions';
 import QUnit from 'qunit';
 const { module: Qmodule, test } = QUnit;
 
@@ -16,7 +16,7 @@ let splitScenarios = appScenarios.map('compat-splitAtRoutes', app => {
       'use strict';
 
       const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-      const { maybeEmbroider } = require('@embroider/test-setup');
+      const { maybeEmbroider } = require('@real_ate/fake-embroider-test-setup');
 
       module.exports = function (defaults) {
         let app = new EmberApp(defaults, {});

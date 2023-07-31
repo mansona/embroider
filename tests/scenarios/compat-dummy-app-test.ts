@@ -1,7 +1,7 @@
-import { ExpectFile, expectRewrittenFilesAt } from '@embroider/test-support/file-assertions/qunit';
-import { Rebuilder } from '@embroider/test-support';
+import { ExpectFile, expectRewrittenFilesAt } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
+import { Rebuilder } from '@real_ate/fake-embroider-test-support';
 import { PreparedApp } from 'scenario-tester';
-import { throwOnWarnings } from '@embroider/core';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
 import merge from 'lodash/merge';
 import { writeFileSync } from 'fs';
 import { join, resolve } from 'path';
@@ -26,9 +26,9 @@ dummyAppScenarios
         },
       },
     });
-    project.linkDevDependency('@embroider/core', { baseDir: __dirname });
-    project.linkDevDependency('@embroider/compat', { baseDir: __dirname });
-    project.linkDevDependency('@embroider/webpack', { baseDir: __dirname });
+    project.linkDevDependency('@real_ate/fake-embroider-core', { baseDir: __dirname });
+    project.linkDevDependency('@real_ate/fake-embroider-compat', { baseDir: __dirname });
+    project.linkDevDependency('@real_ate/fake-embroider-webpack', { baseDir: __dirname });
   })
   .forEachScenario(scenario => {
     Qmodule(scenario.name, function (hooks) {

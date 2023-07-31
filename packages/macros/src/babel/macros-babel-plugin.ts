@@ -18,8 +18,8 @@ export default function main(context: typeof Babel): unknown {
         initState(t, path, state);
       },
       exit(_: NodePath<t.Program>, state: State) {
-        // @embroider/macros itself has no runtime behaviors and should always be removed
-        state.importUtil.removeAllImports('@embroider/macros');
+        // @real_ate/fake-embroider-macros itself has no runtime behaviors and should always be removed
+        state.importUtil.removeAllImports('@real_ate/fake-embroider-macros');
         for (let handler of state.jobs) {
           handler();
         }
@@ -46,7 +46,7 @@ export default function main(context: typeof Babel): unknown {
         let id = path.get('id');
         if (id.isIdentifier() && id.node.name === 'initializeRuntimeMacrosConfig' && state.opts.mode === 'run-time') {
           let pkg = state.owningPackage();
-          if (pkg && pkg.name === '@embroider/macros') {
+          if (pkg && pkg.name === '@real_ate/fake-embroider-macros') {
             inlineRuntimeConfig(path, state, context);
           }
         }
@@ -61,13 +61,13 @@ export default function main(context: typeof Babel): unknown {
 
         // failBuild is implemented for side-effect, not value, so it's not
         // handled by evaluateMacroCall.
-        if (callee.referencesImport('@embroider/macros', 'failBuild')) {
+        if (callee.referencesImport('@real_ate/fake-embroider-macros', 'failBuild')) {
           state.calledIdentifiers.add(callee.node);
           failBuild(path, state);
           return;
         }
 
-        if (callee.referencesImport('@embroider/macros', 'importSync')) {
+        if (callee.referencesImport('@real_ate/fake-embroider-macros', 'importSync')) {
           // we handle importSync in the exit hook
           return;
         }
@@ -81,11 +81,11 @@ export default function main(context: typeof Babel): unknown {
         //  - automatic collapsing of chained properties, etc
         //  - these macros have runtime implementations sometimes, which changes
         //    how we rewrite them
-        let mode: GetConfigMode | false = callee.referencesImport('@embroider/macros', 'getOwnConfig')
+        let mode: GetConfigMode | false = callee.referencesImport('@real_ate/fake-embroider-macros', 'getOwnConfig')
           ? 'own'
-          : callee.referencesImport('@embroider/macros', 'getGlobalConfig')
+          : callee.referencesImport('@real_ate/fake-embroider-macros', 'getGlobalConfig')
           ? 'getGlobalConfig'
-          : callee.referencesImport('@embroider/macros', 'getConfig')
+          : callee.referencesImport('@real_ate/fake-embroider-macros', 'getConfig')
           ? 'package'
           : false;
         if (mode) {
@@ -96,7 +96,7 @@ export default function main(context: typeof Babel): unknown {
 
         // isTesting can have a runtime implementation. At compile time it
         // instead falls through to evaluateMacroCall.
-        if (callee.referencesImport('@embroider/macros', 'isTesting') && state.opts.mode === 'run-time') {
+        if (callee.referencesImport('@real_ate/fake-embroider-macros', 'isTesting') && state.opts.mode === 'run-time') {
           state.calledIdentifiers.add(callee.node);
           callee.replaceWith(state.importUtil.import(callee, state.pathToOurAddon('runtime'), 'isTesting'));
           return;
@@ -118,7 +118,7 @@ export default function main(context: typeof Babel): unknown {
         // We intentionally do this on exit here, to allow other transforms to handle importSync before we do
         // For example ember-auto-import needs to do some custom transforms to enable use of dynamic template strings,
         // so its babel plugin needs to see and handle the importSync call first!
-        if (callee.referencesImport('@embroider/macros', 'importSync')) {
+        if (callee.referencesImport('@real_ate/fake-embroider-macros', 'importSync')) {
           if (state.opts.importSyncImplementation === 'eager') {
             let specifier = path.node.arguments[0];
             if (specifier?.type !== 'StringLiteral') {
@@ -155,16 +155,22 @@ export default function main(context: typeof Babel): unknown {
         'isDevelopingThisPackage',
         'isTesting',
       ]) {
-        if (path.referencesImport('@embroider/macros', candidate) && !state.calledIdentifiers.has(path.node)) {
+        if (
+          path.referencesImport('@real_ate/fake-embroider-macros', candidate) &&
+          !state.calledIdentifiers.has(path.node)
+        ) {
           throw error(path, `You can only use ${candidate} as a function call`);
         }
       }
 
-      if (path.referencesImport('@embroider/macros', 'macroCondition') && !state.calledIdentifiers.has(path.node)) {
+      if (
+        path.referencesImport('@real_ate/fake-embroider-macros', 'macroCondition') &&
+        !state.calledIdentifiers.has(path.node)
+      ) {
         throw error(path, `macroCondition can only be used as the predicate of an if statement or ternary expression`);
       }
 
-      if (path.referencesImport('@embroider/macros', 'each') && !state.calledIdentifiers.has(path.node)) {
+      if (path.referencesImport('@real_ate/fake-embroider-macros', 'each') && !state.calledIdentifiers.has(path.node)) {
         throw error(
           path,
           `the each() macro can only be used within a for ... of statement, like: for (let x of each(thing)){}`

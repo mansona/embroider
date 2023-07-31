@@ -5,18 +5,18 @@ import { existsSync, pathExistsSync } from 'fs-extra';
 import buildFunnel, { Options as FunnelOptions } from 'broccoli-funnel';
 import { UnwatchedDir, WatchedDir } from 'broccoli-source';
 import RewritePackageJSON from './rewrite-package-json';
-import { todo, unsupported } from '@embroider/core/src/messages';
+import { todo, unsupported } from '@real_ate/fake-embroider-core/src/messages';
 import { Node } from 'broccoli-node-api';
 import mergeTrees from 'broccoli-merge-trees';
 import semver from 'semver';
 import rewriteAddonTree from './rewrite-addon-tree';
 import { mergeWithAppend } from './merges';
-import { AddonMeta, debug, PackageCache, AddonInstance, AddonTreePath } from '@embroider/core';
+import { AddonMeta, debug, PackageCache, AddonInstance, AddonTreePath } from '@real_ate/fake-embroider-core';
 import Options from './options';
 import walkSync from 'walk-sync';
 import ObserveTree from './observe-tree';
 import type { Options as HTMLBarsOptions } from 'ember-cli-htmlbars';
-import { isEmbroiderMacrosPlugin } from '@embroider/macros/src/node';
+import { isEmbroiderMacrosPlugin } from '@real_ate/fake-embroider-macros/src/node';
 import { TransformOptions, PluginItem } from '@babel/core';
 import modulesCompat from './modules-compat';
 import writeFile from 'broccoli-file-creator';
@@ -1017,7 +1017,7 @@ export default class V1Addon {
       writeFile(
         'config/environment.js',
         `
-      import { macroCondition, getGlobalConfig, importSync } from '@embroider/macros';
+      import { macroCondition, getGlobalConfig, importSync } from '@real_ate/fake-embroider-macros';
       let config;
       if (macroCondition(getGlobalConfig().fastboot?.isRunning)){
         config = ${JSON.stringify(this.addonInstance.engineConfig?.(this.app.env, {}), null, 2)};
@@ -1084,7 +1084,7 @@ class IntermediateBuild {
 
 function babelPluginAllowedInStage1(plugin: PluginItem) {
   if (isEmbroiderMacrosPlugin(plugin)) {
-    // the point of @embroider/macros is that it's allowed to stay in v2
+    // the point of @real_ate/fake-embroider-macros is that it's allowed to stay in v2
     // addon publication format, so it doesn't need to run here in stage1.
     // We always run it in stage3.
     return false;

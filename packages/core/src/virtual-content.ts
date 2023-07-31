@@ -2,8 +2,8 @@ import { dirname, basename, resolve, posix, sep, join } from 'path';
 import { Resolver, explicitRelative, extensionsPattern, AddonPackage, Package } from '.';
 import { compile } from './js-handlebars';
 
-const externalESPrefix = '/@embroider/ext-es/';
-const externalCJSPrefix = '/@embroider/ext-cjs/';
+const externalESPrefix = '/@real_ate/fake-embroider-ext-es/';
+const externalCJSPrefix = '/@real_ate/fake-embroider-ext-cjs/';
 
 // Given a filename that was passed to your ModuleRequest's `virtualize()`,
 // this produces the corresponding contents. It's a static, stateless function
@@ -34,7 +34,7 @@ export function virtualContent(filename: string, resolver: Resolver): string {
     return renderImplicitModules(im, resolver);
   }
 
-  throw new Error(`not an @embroider/core virtual file: ${filename}`);
+  throw new Error(`not an @real_ate/fake-embroider-core virtual file: ${filename}`);
 }
 
 const externalESShim = compile(`
@@ -161,7 +161,7 @@ export function decodeFastbootSwitch(filename: string) {
 }
 
 const fastbootSwitchTemplate = compile(`
-import { macroCondition, getGlobalConfig, importSync } from '@embroider/macros';
+import { macroCondition, getGlobalConfig, importSync } from '@real_ate/fake-embroider-macros';
 let mod;
 if (macroCondition(getGlobalConfig().fastboot?.isRunning)){
   mod = importSync('./fastboot');
@@ -263,7 +263,7 @@ function renderImplicitModules(
 }
 
 const implicitModulesTemplate = compile(`
-import { importSync as i } from '@embroider/macros';
+import { importSync as i } from '@real_ate/fake-embroider-macros';
 let d = window.define;
 {{#each lazyModules as |module|}}
 d("{{js-string-escape module.runtime}}", function(){ return i("{{js-string-escape module.buildtime}}");});

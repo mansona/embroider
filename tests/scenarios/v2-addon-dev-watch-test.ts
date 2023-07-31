@@ -29,7 +29,7 @@ Scenarios.fromProject(() => baseV2Addon())
             ["@babel/preset-env"]
           ],
           "plugins": [
-            "@embroider/addon-dev/template-colocation-plugin",
+            "@real_ate/fake-embroider-addon-dev/template-colocation-plugin",
             ["@babel/plugin-proposal-decorators", { "legacy": true }],
             [ "@babel/plugin-transform-class-properties" ]
           ]
@@ -37,7 +37,7 @@ Scenarios.fromProject(() => baseV2Addon())
       `,
       'rollup.config.mjs': `
         import { babel } from '@rollup/plugin-babel';
-        import { Addon } from '@embroider/addon-dev/rollup';
+        import { Addon } from '@real_ate/fake-embroider-addon-dev/rollup';
 
         const addon = new Addon({
           srcDir: 'src',
@@ -97,8 +97,8 @@ Scenarios.fromProject(() => baseV2Addon())
       },
     });
 
-    addon.linkDependency('@embroider/addon-shim', { baseDir: __dirname });
-    addon.linkDependency('@embroider/addon-dev', { baseDir: __dirname });
+    addon.linkDependency('@real_ate/fake-embroider-addon-shim', { baseDir: __dirname });
+    addon.linkDependency('@real_ate/fake-embroider-addon-dev', { baseDir: __dirname });
     addon.linkDependency('babel-plugin-ember-template-compilation', { baseDir: __dirname });
     addon.linkDevDependency('@babel/core', { baseDir: __dirname });
     addon.linkDevDependency('@babel/plugin-transform-class-properties', { baseDir: __dirname });

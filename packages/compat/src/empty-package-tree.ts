@@ -1,4 +1,4 @@
-import { Package } from '@embroider/core';
+import { Package } from '@real_ate/fake-embroider-core';
 import Plugin from 'broccoli-plugin';
 import { writeJSONSync } from 'fs-extra';
 import { join } from 'path';

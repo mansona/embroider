@@ -1,4 +1,4 @@
-import { Package, PackageCache } from '@embroider/core';
+import { Package, PackageCache } from '@real_ate/fake-embroider-core';
 import { Memoize } from 'typescript-memoize';
 import cloneDeep from 'lodash/cloneDeep';
 

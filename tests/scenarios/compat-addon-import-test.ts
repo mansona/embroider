@@ -1,6 +1,6 @@
-import { expectFilesAt, ExpectFile } from '@embroider/test-support/file-assertions/qunit';
+import { expectFilesAt, ExpectFile } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
 import { PreparedApp } from 'scenario-tester';
-import { throwOnWarnings } from '@embroider/core';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
 import { appScenarios, baseAddon } from './scenarios';
 import QUnit from 'qunit';
 import { merge } from 'lodash';
@@ -51,7 +51,7 @@ appScenarios
 
       test('synthesized-vendor has imported file in node modules', function () {
         expectFile(
-          './node_modules/.embroider/rewritten-packages/@embroider/synthesized-vendor/node_modules/third-party1/index.js'
+          './node_modules/.embroider/rewritten-packages/@real_ate/fake-embroider-synthesized-vendor/node_modules/third-party1/index.js'
         ).matches(`(function(define){
 module.exports = function() { console.log(\"hello world\"); }
 })((function(){ function newDefine(){ var args = Array.prototype.slice.call(arguments); return define.apply(null, args); }; newDefine.amd = true; return newDefine; })());`);

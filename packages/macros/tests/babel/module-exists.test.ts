@@ -4,9 +4,9 @@ describe(`moduleExists`, function () {
   allBabelVersions(function (transform: (code: string) => string) {
     test('package import is satisfied', () => {
       let code = transform(`
-      import { moduleExists } from '@embroider/macros';
+      import { moduleExists } from '@real_ate/fake-embroider-macros';
       export default function() {
-        return moduleExists('@embroider/core/src/index');
+        return moduleExists('@real_ate/fake-embroider-core/src/index');
       }
       `);
       expect(runDefault(code)).toBe(true);
@@ -14,9 +14,9 @@ describe(`moduleExists`, function () {
 
     test('package import is not satisfied', () => {
       let code = transform(`
-      import { moduleExists } from '@embroider/macros';
+      import { moduleExists } from '@real_ate/fake-embroider-macros';
       export default function() {
-        return moduleExists('@embroider/core/not/a/real/thing');
+        return moduleExists('@real_ate/fake-embroider-core/not/a/real/thing');
       }
       `);
       expect(runDefault(code)).toBe(false);
@@ -24,7 +24,7 @@ describe(`moduleExists`, function () {
 
     test('relative import is satisfied', () => {
       let code = transform(`
-      import { moduleExists } from '@embroider/macros';
+      import { moduleExists } from '@real_ate/fake-embroider-macros';
       export default function() {
         return moduleExists('./dependency-satisfies.test');
       }
@@ -34,7 +34,7 @@ describe(`moduleExists`, function () {
 
     test('relative import is not satisfied', () => {
       let code = transform(`
-      import { moduleExists } from '@embroider/macros';
+      import { moduleExists } from '@real_ate/fake-embroider-macros';
       export default function() {
         return moduleExists('./nope');
       }
@@ -44,7 +44,7 @@ describe(`moduleExists`, function () {
 
     test('package not present', () => {
       let code = transform(`
-      import { moduleExists } from '@embroider/macros';
+      import { moduleExists } from '@real_ate/fake-embroider-macros';
       export default function() {
         return moduleExists('not-a-real-dep');
       }
@@ -54,7 +54,7 @@ describe(`moduleExists`, function () {
 
     test('import gets removed', () => {
       let code = transform(`
-      import { moduleExists } from '@embroider/macros';
+      import { moduleExists } from '@real_ate/fake-embroider-macros';
       export default function() {
         return moduleExists('not-a-real-dep');
       }
@@ -66,7 +66,7 @@ describe(`moduleExists`, function () {
     test('non call error', () => {
       expect(() => {
         transform(`
-          import { moduleExists } from '@embroider/macros';
+          import { moduleExists } from '@real_ate/fake-embroider-macros';
           let x = moduleExists;
         `);
       }).toThrow(/You can only use moduleExists as a function call/);
@@ -75,7 +75,7 @@ describe(`moduleExists`, function () {
     test('args length error', () => {
       expect(() => {
         transform(`
-          import { moduleExists } from '@embroider/macros';
+          import { moduleExists } from '@real_ate/fake-embroider-macros';
           moduleExists('foo', 'bar');
         `);
       }).toThrow(/moduleExists takes exactly one argument, you passed 2/);
@@ -84,7 +84,7 @@ describe(`moduleExists`, function () {
     test('non literal arg error', () => {
       expect(() => {
         transform(`
-          import { moduleExists } from '@embroider/macros';
+          import { moduleExists } from '@real_ate/fake-embroider-macros';
           let name = 'qunit';
           moduleExists(name);
         `);

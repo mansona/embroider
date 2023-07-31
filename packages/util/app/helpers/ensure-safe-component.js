@@ -1,1 +1,1 @@
-export { EnsureSafeComponentHelper as default } from '@embroider/util';
+export { EnsureSafeComponentHelper as default } from '@real_ate/fake-embroider-util';

@@ -3,7 +3,7 @@ import { join } from 'path';
 import crypto from 'crypto';
 import findUp from 'find-up';
 import type { PluginItem } from '@babel/core';
-import { RewrittenPackageCache, getOrCreate } from '@embroider/shared-internals';
+import { RewrittenPackageCache, getOrCreate } from '@real_ate/fake-embroider-shared-internals';
 import { FirstTransformParams, makeFirstTransform, makeSecondTransform } from './glimmer/ast-transform';
 import State from './babel/state';
 import partition from 'lodash/partition';
@@ -33,8 +33,8 @@ type GlobalSharedState = WeakMap<
 >;
 
 // this is a module-scoped cache. If multiple callers ask _this copy_ of
-// @embroider/macros for a shared MacrosConfig, they'll all get the same one.
-// And if somebody asks a *different* copy of @embroider/macros for the shared
+// @real_ate/fake-embroider-macros for a shared MacrosConfig, they'll all get the same one.
+// And if somebody asks a *different* copy of @real_ate/fake-embroider-macros for the shared
 // MacrosConfig, it will have its own instance with its own code, but will still
 // share the GlobalSharedState beneath.
 let localSharedState: WeakMap<any, MacrosConfig> = new WeakMap();
@@ -83,7 +83,7 @@ export default class MacrosConfig {
 
     let shared = g.__embroider_macros_global__.get(key);
     if (shared) {
-      // if an earlier version of @embroider/macros created the shared state, it
+      // if an earlier version of @real_ate/fake-embroider-macros created the shared state, it
       // would have configSources.
       if (!shared.configSources) {
         shared.configSources = new WeakMap();
@@ -147,10 +147,10 @@ export default class MacrosConfig {
 
   private constructor(private origAppRoot: string) {
     // this uses globalConfig because these things truly are global. Even if a
-    // package doesn't have a dep or peerDep on @embroider/macros, it's legit
+    // package doesn't have a dep or peerDep on @real_ate/fake-embroider-macros, it's legit
     // for them to want to know the answer to these questions, and there is only
     // one answer throughout the whole dependency graph.
-    this.globalConfig['@embroider/macros'] = {
+    this.globalConfig['@real_ate/fake-embroider-macros'] = {
       // this powers the `isTesting` macro. It always starts out false here,
       // because:
       //  - if this is a production build, we will evaluate all macros at build
@@ -349,7 +349,7 @@ export default class MacrosConfig {
 
     let lockFileBuffer = lockFilePath ? fs.readFileSync(lockFilePath) : 'no-cache-key';
 
-    // @embroider/macros provides a macro called dependencySatisfies which checks if a given
+    // @real_ate/fake-embroider-macros provides a macro called dependencySatisfies which checks if a given
     // package name satisfies a given semver version range. Due to the way babel caches this can
     // cause a problem where the macro plugin does not run (because it has been cached) but the version
     // of the dependency being checked for changes (due to installing a different version). This will lead to
@@ -370,9 +370,9 @@ export default class MacrosConfig {
     return [
       [join(__dirname, 'babel', 'macros-babel-plugin.js'), opts],
       [
-        require.resolve('@embroider/shared-internals/src/babel-plugin-cache-busting.js'),
+        require.resolve('@real_ate/fake-embroider-shared-internals/src/babel-plugin-cache-busting.js'),
         { version: cacheKey },
-        `@embroider/macros cache buster: ${owningPackageRoot}`,
+        `@real_ate/fake-embroider-macros cache buster: ${owningPackageRoot}`,
       ],
     ];
   }
@@ -404,14 +404,14 @@ export default class MacrosConfig {
       // setting config before we generate the userConfigs
       get configs() {
         if (!configs) {
-          throw new Error(`Bug: @embroider/macros ast-transforms were not plugged into a MacrosConfig`);
+          throw new Error(`Bug: @real_ate/fake-embroider-macros ast-transforms were not plugged into a MacrosConfig`);
         }
         return configs.userConfigs;
       },
       packageRoot: owningPackageRoot,
       get appRoot() {
         if (!configs) {
-          throw new Error(`Bug: @embroider/macros ast-transforms were not plugged into a MacrosConfig`);
+          throw new Error(`Bug: @real_ate/fake-embroider-macros ast-transforms were not plugged into a MacrosConfig`);
         }
         return configs.appRoot;
       },

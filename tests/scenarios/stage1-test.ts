@@ -3,7 +3,7 @@ import { loadFromFixtureData } from './helpers';
 import { baseAddon, appScenarios } from './scenarios';
 import { PreparedApp } from 'scenario-tester';
 import QUnit from 'qunit';
-import { expectRewrittenFilesAt, ExpectFile } from '@embroider/test-support/file-assertions/qunit';
+import { expectRewrittenFilesAt, ExpectFile } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
 
 const { module: Qmodule, test } = QUnit;
 
@@ -15,8 +15,8 @@ appScenarios
     merge(addon.files, loadFromFixtureData('hello-world-addon'));
     addon.pkg.name = 'my-addon';
 
-    addon.linkDependency('@embroider/sample-transforms', { baseDir: __dirname });
-    addon.linkDependency('@embroider/macros', { baseDir: __dirname });
+    addon.linkDependency('@real_ate/fake-embroider-sample-transforms', { baseDir: __dirname });
+    addon.linkDependency('@real_ate/fake-embroider-macros', { baseDir: __dirname });
     project.addDependency(addon);
 
     // our app will include an in-repo addon
@@ -160,8 +160,8 @@ appScenarios
     });
     addon.pkg.name = 'my-addon';
 
-    addon.linkDependency('@embroider/sample-transforms', { baseDir: __dirname });
-    addon.linkDependency('@embroider/macros', { baseDir: __dirname });
+    addon.linkDependency('@real_ate/fake-embroider-sample-transforms', { baseDir: __dirname });
+    addon.linkDependency('@real_ate/fake-embroider-macros', { baseDir: __dirname });
     project.addDependency(addon);
   })
   .forEachScenario(async scenario => {

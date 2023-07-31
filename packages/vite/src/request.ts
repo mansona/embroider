@@ -1,4 +1,4 @@
-import { ModuleRequest, cleanUrl } from '@embroider/core';
+import { ModuleRequest, cleanUrl } from '@real_ate/fake-embroider-core';
 
 export const virtualPrefix = 'embroider_virtual:';
 

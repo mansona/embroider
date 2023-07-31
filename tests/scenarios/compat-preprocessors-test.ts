@@ -1,7 +1,7 @@
 import { PreparedApp } from 'scenario-tester';
 import { appScenarios, baseAddon } from './scenarios';
-import { ExpectFile, expectRewrittenFilesAt } from '@embroider/test-support/file-assertions/qunit';
-import { throwOnWarnings } from '@embroider/core';
+import { ExpectFile, expectRewrittenFilesAt } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
 import merge from 'lodash/merge';
 import QUnit from 'qunit';
 const { module: Qmodule, test } = QUnit;

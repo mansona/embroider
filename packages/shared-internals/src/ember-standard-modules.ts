@@ -9,7 +9,7 @@ import mappings from 'ember-rfc176-data/mappings.json';
 // exist as real packages. If a build system encounters them in stage 3, it
 // should convert them to runtime AMD require.
 //
-// Some of them (like @embroider/macros) won't ever be seen in stage 3, because
+// Some of them (like @real_ate/fake-embroider-macros) won't ever be seen in stage 3, because
 // earlier plugins should take care of them.
 export const emberVirtualPackages = new Set<string>(mappings.map((m: any) => m.module));
 
@@ -34,7 +34,7 @@ emberVirtualPackages.add('ember');
 
 // this is a real package and even though most of its primary API is implemented
 // as transforms, it does include some runtime code.
-emberVirtualPeerDeps.add('@embroider/macros');
+emberVirtualPeerDeps.add('@real_ate/fake-embroider-macros');
 
 // while people don't manually import from ember-source, our v1-to-v2 conversion
 // of ember-source can send requests to here, and therefore any addon might need

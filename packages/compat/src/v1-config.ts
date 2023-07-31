@@ -43,7 +43,7 @@ export class WriteV1Config extends Plugin {
     } else {
       if (this.testInputTree) {
         contents = `
-        import { isTesting } from '@embroider/macros';
+        import { isTesting } from '@real_ate/fake-embroider-macros';
         let env;
         if (isTesting()) {
           env = ${JSON.stringify(this.testInputTree.readConfig())};

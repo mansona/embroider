@@ -1,11 +1,11 @@
-import { AddonMeta, AppMeta, RewrittenPackageIndex } from '@embroider/shared-internals';
+import { AddonMeta, AppMeta, RewrittenPackageIndex } from '@real_ate/fake-embroider-shared-internals';
 import { outputFileSync, readJsonSync, writeJSONSync } from 'fs-extra';
 import { resolve, sep } from 'path';
 import QUnit from 'qunit';
 import { PreparedApp, Project, Scenarios } from 'scenario-tester';
-import { CompatResolverOptions } from '@embroider/compat/src/resolver-transform';
-import { ExpectAuditResults } from '@embroider/test-support/audit-assertions';
-import { installAuditAssertions } from '@embroider/test-support/audit-assertions';
+import { CompatResolverOptions } from '@real_ate/fake-embroider-compat/src/resolver-transform';
+import { ExpectAuditResults } from '@real_ate/fake-embroider-test-support/audit-assertions';
+import { installAuditAssertions } from '@real_ate/fake-embroider-test-support/audit-assertions';
 import { baseAddon } from './scenarios';
 
 const { module: Qmodule, test } = QUnit;
@@ -608,7 +608,10 @@ Scenarios.fromProject(() => new Project())
             'app.js': `import "rsvp"`,
           });
           await configure({});
-          expectAudit.module('./app.js').resolves('rsvp').to(resolve('/@embroider/ext-cjs/rsvp').split(sep).join('/'));
+          expectAudit
+            .module('./app.js')
+            .resolves('rsvp')
+            .to(resolve('/@real_ate/fake-embroider-ext-cjs/rsvp').split(sep).join('/'));
         });
 
         test(`known ember-source-provided virtual packages are not externalized when explicitly included in deps`, async function () {
@@ -686,7 +689,7 @@ Scenarios.fromProject(() => new Project())
 
           let switcherModule = expectAudit.module('./app.js').resolves('my-app/hello-world').toModule();
           switcherModule.codeEquals(`
-            import { macroCondition, getGlobalConfig, importSync } from '@embroider/macros';
+            import { macroCondition, getGlobalConfig, importSync } from '@real_ate/fake-embroider-macros';
             let mod;
             if (macroCondition(getGlobalConfig().fastboot?.isRunning)) {
               mod = importSync("./fastboot");
@@ -736,7 +739,7 @@ Scenarios.fromProject(() => new Project())
 
           let switcherModule = expectAudit.module('./app.js').resolves('my-app/hello-world').toModule();
           switcherModule.codeEquals(`
-            import { macroCondition, getGlobalConfig, importSync } from '@embroider/macros';
+            import { macroCondition, getGlobalConfig, importSync } from '@real_ate/fake-embroider-macros';
             let mod;
             if (macroCondition(getGlobalConfig().fastboot?.isRunning)) {
               mod = importSync("./fastboot");

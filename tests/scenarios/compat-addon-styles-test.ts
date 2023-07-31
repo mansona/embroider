@@ -1,6 +1,10 @@
-import { expectFilesAt, expectRewrittenFilesAt, ExpectFile } from '@embroider/test-support/file-assertions/qunit';
+import {
+  expectFilesAt,
+  expectRewrittenFilesAt,
+  ExpectFile,
+} from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
 import { PreparedApp } from 'scenario-tester';
-import { throwOnWarnings } from '@embroider/core';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
 import { appScenarios, baseAddon } from './scenarios';
 import QUnit from 'qunit';
 import { merge } from 'lodash';
@@ -107,14 +111,14 @@ appScenarios
 
       test('treeForStyles adds styles to build', function () {
         expectFile(
-          './node_modules/.embroider/rewritten-packages/@embroider/synthesized-styles/assets/third-party1.css'
+          './node_modules/.embroider/rewritten-packages/@real_ate/fake-embroider-synthesized-styles/assets/third-party1.css'
         ).matches('.error { color: red; }');
       });
 
       // prevent regression of https://github.com/embroider-build/embroider/issues/164
       test('treeForStyles not calling super adds styles to build', function () {
         expectFile(
-          './node_modules/.embroider/rewritten-packages/@embroider/synthesized-styles/assets/third-party2.css'
+          './node_modules/.embroider/rewritten-packages/@real_ate/fake-embroider-synthesized-styles/assets/third-party2.css'
         ).matches('.success { color: green }');
       });
 

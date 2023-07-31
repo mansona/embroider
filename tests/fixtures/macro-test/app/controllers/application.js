@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { getOwnConfig, isTesting, isDevelopingApp, macroCondition, dependencySatisfies } from '@embroider/macros';
+import { getOwnConfig, isTesting, isDevelopingApp, macroCondition, dependencySatisfies } from '@real_ate/fake-embroider-macros';
 
 export default class Application extends Controller {
   constructor() {

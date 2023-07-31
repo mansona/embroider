@@ -1,5 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
-import { Addon } from '@embroider/addon-dev/rollup';
+import { Addon } from '@real_ate/fake-embroider-addon-dev/rollup';
 import { babel } from '@rollup/plugin-babel';
 
 const addon = new Addon({

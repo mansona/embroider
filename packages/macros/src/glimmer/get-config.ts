@@ -1,4 +1,4 @@
-import type { RewrittenPackageCache } from '@embroider/shared-internals';
+import type { RewrittenPackageCache } from '@real_ate/fake-embroider-shared-internals';
 
 export default function getConfig(
   node: any,

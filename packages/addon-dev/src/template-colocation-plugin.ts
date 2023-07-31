@@ -1,7 +1,7 @@
 import {
   templateColocationPlugin,
   Options as TemplateColocationPluginOptions,
-} from '@embroider/core';
+} from '@real_ate/fake-embroider-core';
 
 export { TemplateColocationPluginOptions as Options };
 export default templateColocationPlugin;

@@ -1,5 +1,5 @@
-import { ExpectFile, expectFilesAt } from '@embroider/test-support/file-assertions/qunit';
-import { throwOnWarnings } from '@embroider/core';
+import { ExpectFile, expectFilesAt } from '@real_ate/fake-embroider-test-support/file-assertions/qunit';
+import { throwOnWarnings } from '@real_ate/fake-embroider-core';
 import { PreparedApp } from 'scenario-tester';
 import { appScenarios } from './scenarios';
 import { readFileSync } from 'fs';
@@ -17,7 +17,7 @@ appScenarios
       'use strict';
 
       const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-      const { maybeEmbroider } = require('@embroider/test-setup');
+      const { maybeEmbroider } = require('@real_ate/fake-embroider-test-setup');
 
       module.exports = function (defaults) {
         let app = new EmberApp(defaults, {

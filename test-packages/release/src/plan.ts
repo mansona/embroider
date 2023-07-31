@@ -202,7 +202,11 @@ export function planVersionBumps(changed: ParsedChangelog): Solution {
     }
 
     for (let pkg of section.packages) {
-      plan.addConstraint(`@embroider/${pkg}`, section.impact, `Appears in changelog section ${section.heading}`);
+      plan.addConstraint(
+        `@real_ate/fake-embroider-${pkg}`,
+        section.impact,
+        `Appears in changelog section ${section.heading}`
+      );
     }
   }
 

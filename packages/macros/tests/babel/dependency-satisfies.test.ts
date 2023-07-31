@@ -1,4 +1,4 @@
-import { allBabelVersions, runDefault } from '@embroider/test-support';
+import { allBabelVersions, runDefault } from '@real_ate/fake-embroider-test-support';
 import { Project } from 'scenario-tester';
 import { join } from 'path';
 import { MacrosConfig } from '../../src/node';
@@ -33,7 +33,7 @@ describe(`dependencySatisfies`, function () {
       test('is satisfied', () => {
         project.addDependency('example-package', '2.9.0');
         let code = transform(`
-      import { dependencySatisfies } from '@embroider/macros';
+      import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
       export default function() {
         return dependencySatisfies('example-package', '^2.8.0');
       }
@@ -44,7 +44,7 @@ describe(`dependencySatisfies`, function () {
       test('is not satisfied', () => {
         project.addDependency('example-package', '2.9.0');
         let code = transform(`
-      import { dependencySatisfies } from '@embroider/macros';
+      import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
       export default function() {
         return dependencySatisfies('example-package', '^10.0.0');
       }
@@ -54,7 +54,7 @@ describe(`dependencySatisfies`, function () {
 
       test('is not present', () => {
         let code = transform(`
-      import { dependencySatisfies } from '@embroider/macros';
+      import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
       export default function() {
         return dependencySatisfies('not-a-real-dep', '^10.0.0');
       }
@@ -64,7 +64,7 @@ describe(`dependencySatisfies`, function () {
 
       test('import gets removed', () => {
         let code = transform(`
-      import { dependencySatisfies } from '@embroider/macros';
+      import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
       export default function() {
         return dependencySatisfies('not-a-real-dep', '1');
       }
@@ -74,7 +74,7 @@ describe(`dependencySatisfies`, function () {
 
       test('entire import statement gets removed', () => {
         let code = transform(`
-      import { dependencySatisfies } from '@embroider/macros';
+      import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
       export default function() {
         return dependencySatisfies('not-a-real-dep', '*');
       }
@@ -85,7 +85,7 @@ describe(`dependencySatisfies`, function () {
 
       test('unused import gets removed', () => {
         let code = transform(`
-      import { dependencySatisfies } from '@embroider/macros';
+      import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
       export default function() {
         return 1;
       }
@@ -97,7 +97,7 @@ describe(`dependencySatisfies`, function () {
       test('non call error', () => {
         expect(() => {
           transform(`
-          import { dependencySatisfies } from '@embroider/macros';
+          import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
           let x = dependencySatisfies;
         `);
         }).toThrow(/You can only use dependencySatisfies as a function call/);
@@ -106,7 +106,7 @@ describe(`dependencySatisfies`, function () {
       test('args length error', () => {
         expect(() => {
           transform(`
-          import { dependencySatisfies } from '@embroider/macros';
+          import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
           dependencySatisfies('foo', 'bar', 'baz');
         `);
         }).toThrow(/dependencySatisfies takes exactly two arguments, you passed 3/);
@@ -115,7 +115,7 @@ describe(`dependencySatisfies`, function () {
       test('non literal arg error', () => {
         expect(() => {
           transform(`
-          import { dependencySatisfies } from '@embroider/macros';
+          import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
           let name = 'qunit';
           dependencySatisfies(name, '*');
         `);
@@ -126,7 +126,7 @@ describe(`dependencySatisfies`, function () {
         project.addDependency('foo', '1.1.0-beta.1');
         let code = transform(
           `
-          import { dependencySatisfies } from '@embroider/macros';
+          import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
           export default function() {
             return dependencySatisfies('foo', '^1.0.0');
           }
@@ -136,17 +136,17 @@ describe(`dependencySatisfies`, function () {
       });
 
       test('monorepo resolutions resolve correctly', () => {
-        project.addDependency('@embroider/util', '1.2.3');
+        project.addDependency('@real_ate/fake-embroider-util', '1.2.3');
         let code = transform(`
-        import { dependencySatisfies } from '@embroider/macros';
+        import { dependencySatisfies } from '@real_ate/fake-embroider-macros';
 
         export default function() {
-          return { 
+          return {
             // specified in dependencies
-            util: dependencySatisfies('@embroider/util', '*'),
+            util: dependencySatisfies('@real_ate/fake-embroider-util', '*'),
 
             // not specified as any kind of dep
-            webpack: dependencySatisfies('@embroider/webpack', '*'),
+            webpack: dependencySatisfies('@real_ate/fake-embroider-webpack', '*'),
           }
         }
       `);

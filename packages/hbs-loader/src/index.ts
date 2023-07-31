@@ -1,5 +1,5 @@
 import type { LoaderContext } from 'webpack';
-import { hbsToJS } from '@embroider/core';
+import { hbsToJS } from '@real_ate/fake-embroider-core';
 
 export interface Options {
   compatModuleNaming?: {

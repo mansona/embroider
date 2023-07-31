@@ -1,6 +1,6 @@
 import { V1AddonConstructor } from './v1-addon';
 import { Node } from 'broccoli-node-api';
-import { Options as CoreOptions, optionsWithDefaults as coreWithDefaults } from '@embroider/core';
+import { Options as CoreOptions, optionsWithDefaults as coreWithDefaults } from '@real_ate/fake-embroider-core';
 import { PackageRules } from './dependency-rules';
 
 // These options control how hard we will try to achieve compatibility with v1
@@ -55,7 +55,7 @@ export default interface Options extends CoreOptions {
 
   // Allows you to override how specific addons will build. Like:
   //
-  //   import V1Addon from '@embroider/compat'; let compatAdapters = new Map();
+  //   import V1Addon from '@real_ate/fake-embroider-compat'; let compatAdapters = new Map();
   //   compatAdapters.set('some-addon', class extends V1Addon {// do stuff here:
   //   see examples in ./compat-adapters
   //   });
@@ -81,7 +81,7 @@ export default interface Options extends CoreOptions {
   // precedence over the built-ins. Order matters, first matching rule will
   // apply to any given addon.
   //
-  // See the addon-dependency-rules directory in the @embroider/compat package
+  // See the addon-dependency-rules directory in the @real_ate/fake-embroider-compat package
   // for the built-in rules.
   //
   // These ONLY APPLY to v1-formatted addons. An addon that ships as native v2
@@ -113,7 +113,7 @@ export function optionsWithDefaults(options?: Options): Required<Options> {
 
 // These are recommended configurations for addons to test themselves under. By
 // keeping them here, it's easier to do ecosystem-wide compatibility testing.
-// See the `@embroider/test-setup` package which can help consume these to test
+// See the `@real_ate/fake-embroider-test-setup` package which can help consume these to test
 // them in CI.
 export const recommendedOptions: { [name: string]: Options } = Object.freeze({
   safe: Object.freeze({}),

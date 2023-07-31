@@ -4,7 +4,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    '@embroider/macros': {
+    '@real_ate/fake-embroider-macros': {
       setOwnConfig: {
         mode: 'amazing',
         count: 42,
@@ -45,6 +45,6 @@ module.exports = function (defaults) {
     return app.toTree();
   }
 
-  const Webpack = require('@embroider/webpack').Webpack;
-  return require('@embroider/compat').compatBuild(app, Webpack);
+  const Webpack = require('@real_ate/fake-embroider-webpack').Webpack;
+  return require('@real_ate/fake-embroider-compat').compatBuild(app, Webpack);
 };

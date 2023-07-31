@@ -5,8 +5,8 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {});
 
-  const Webpack = require('@embroider/webpack').Webpack;
-  return require('@embroider/compat').compatBuild(app, Webpack, {
+  const Webpack = require('@real_ate/fake-embroider-webpack').Webpack;
+  return require('@real_ate/fake-embroider-compat').compatBuild(app, Webpack, {
     skipBabel: [
       {
         package: 'qunit',

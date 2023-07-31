@@ -1,8 +1,8 @@
-import { emberTemplateCompiler } from '@embroider/test-support';
+import { emberTemplateCompiler } from '@real_ate/fake-embroider-test-support';
 import { Project } from 'scenario-tester';
 import { MacrosConfig } from '../../src/node';
 import { join, resolve } from 'path';
-import { hbsToJS } from '@embroider/shared-internals';
+import { hbsToJS } from '@real_ate/fake-embroider-shared-internals';
 import { transformSync } from '@babel/core';
 import { Options as EtcOptions, Transform } from 'babel-plugin-ember-template-compilation';
 

@@ -1,6 +1,6 @@
 import type { Node } from 'broccoli-node-api';
 import Filter from 'broccoli-persistent-filter';
-import { hbsToJS } from '@embroider/core';
+import { hbsToJS } from '@real_ate/fake-embroider-core';
 import { join } from 'path';
 
 export default class TemplateCompileTree extends Filter {

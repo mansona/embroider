@@ -5,14 +5,14 @@ import {
   ModuleRequest,
   ResolverFunction,
   Resolution,
-} from '@embroider/core';
+} from '@real_ate/fake-embroider-core';
 import type { Compiler, Module } from 'webpack';
 import assertNever from 'assert-never';
 import escapeRegExp from 'escape-string-regexp';
 
 export { EmbroiderResolverOptions as Options };
 
-const virtualLoaderName = '@embroider/webpack/src/virtual-loader';
+const virtualLoaderName = '@real_ate/fake-embroider-webpack/src/virtual-loader';
 const virtualLoaderPath = resolve(__dirname, './virtual-loader.js');
 const virtualRequestPattern = new RegExp(`${escapeRegExp(virtualLoaderPath)}\\?(?<query>.+)!`);
 
@@ -43,33 +43,36 @@ export class EmbroiderPlugin {
   apply(compiler: Compiler) {
     this.#addLoaderAlias(compiler, virtualLoaderName, virtualLoaderPath);
 
-    compiler.hooks.normalModuleFactory.tap('@embroider/webpack', nmf => {
+    compiler.hooks.normalModuleFactory.tap('@real_ate/fake-embroider-webpack', nmf => {
       let defaultResolve = getDefaultResolveHook(nmf.hooks.resolve.taps);
       let adaptedResolve = getAdaptedResolve(defaultResolve);
 
-      nmf.hooks.resolve.tapAsync({ name: '@embroider/webpack', stage: 50 }, (state: unknown, callback: CB) => {
-        let request = WebpackModuleRequest.from(state, this.#babelLoaderPrefix, this.#appRoot);
-        if (!request) {
-          defaultResolve(state, callback);
-          return;
-        }
+      nmf.hooks.resolve.tapAsync(
+        { name: '@real_ate/fake-embroider-webpack', stage: 50 },
+        (state: unknown, callback: CB) => {
+          let request = WebpackModuleRequest.from(state, this.#babelLoaderPrefix, this.#appRoot);
+          if (!request) {
+            defaultResolve(state, callback);
+            return;
+          }
 
-        this.#resolver.resolve(request, adaptedResolve).then(
-          resolution => {
-            switch (resolution.type) {
-              case 'not_found':
-                callback(resolution.err);
-                break;
-              case 'found':
-                callback(null, resolution.result);
-                break;
-              default:
-                throw assertNever(resolution);
-            }
-          },
-          err => callback(err)
-        );
-      });
+          this.#resolver.resolve(request, adaptedResolve).then(
+            resolution => {
+              switch (resolution.type) {
+                case 'not_found':
+                  callback(resolution.err);
+                  break;
+                case 'found':
+                  callback(null, resolution.result);
+                  break;
+                default:
+                  throw assertNever(resolution);
+              }
+            },
+            err => callback(err)
+          );
+        }
+      );
     });
   }
 }
@@ -88,7 +91,7 @@ function getDefaultResolveHook(taps: { name: string; fn: Function }[]): DefaultR
 }
 
 // This converts the raw function we got out of webpack into the right interface
-// for use by @embroider/core's resolver.
+// for use by @real_ate/fake-embroider-core's resolver.
 function getAdaptedResolve(
   defaultResolve: DefaultResolve
 ): ResolverFunction<WebpackModuleRequest, Resolution<Module, null | Error>> {

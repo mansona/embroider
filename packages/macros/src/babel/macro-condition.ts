@@ -14,7 +14,7 @@ export function isMacroConditionPath(
   let test = path.get('test');
   if (test.isCallExpression()) {
     let callee = test.get('callee');
-    if (callee.referencesImport('@embroider/macros', 'macroCondition')) {
+    if (callee.referencesImport('@real_ate/fake-embroider-macros', 'macroCondition')) {
       return true;
     }
   }

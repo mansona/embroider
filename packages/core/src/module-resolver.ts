@@ -4,9 +4,9 @@ import {
   extensionsPattern,
   packageName as getPackageName,
   packageName,
-} from '@embroider/shared-internals';
+} from '@real_ate/fake-embroider-shared-internals';
 import { dirname, resolve } from 'path';
-import { Package, V2Package, explicitRelative, RewrittenPackageCache } from '@embroider/shared-internals';
+import { Package, V2Package, explicitRelative, RewrittenPackageCache } from '@real_ate/fake-embroider-shared-internals';
 import makeDebug from 'debug';
 import assertNever from 'assert-never';
 import resolveModule from 'resolve';
@@ -161,7 +161,7 @@ export class Resolver {
   constructor(readonly options: Options) {}
 
   beforeResolve<R extends ModuleRequest>(request: R): R {
-    if (request.specifier === '@embroider/macros') {
+    if (request.specifier === '@real_ate/fake-embroider-macros') {
       // the macros package is always handled directly within babel (not
       // necessarily as a real resolvable package), so we should not mess with it.
       // It might not get compiled away until *after* our plugin has run, which is
@@ -709,7 +709,7 @@ export class Resolver {
     );
     if (!owningEngine) {
       throw new Error(
-        `bug in @embroider/core/src/module-resolver: cannot figure out the owning engine for ${pkg.root}`
+        `bug in @real_ate/fake-embroider-core/src/module-resolver: cannot figure out the owning engine for ${pkg.root}`
       );
     }
     return owningEngine;
@@ -855,7 +855,7 @@ export class Resolver {
         // this relative path escape its package. So it's not really using
         // normal inter-package resolving and we should leave it alone. This
         // case comes up especially when babel transforms are trying to insert
-        // references to runtime utilities, like we do in @embroider/macros.
+        // references to runtime utilities, like we do in @real_ate/fake-embroider-macros.
         return logTransition('beforeResolve: relative path escapes its package', request);
       }
 
@@ -953,7 +953,7 @@ export class Resolver {
         throw new Error(
           `A module tried to resolve "${request.specifier}" and didn't find it (${label}).
 
- - Maybe a dependency declaration is missing? 
+ - Maybe a dependency declaration is missing?
  - Remember that v1 addons can only import non-Ember-addon NPM dependencies if they include ember-auto-import in their dependencies.
  - If this dependency is available in the AMD loader (because someone manually called "define()" for it), you can configure a shim like:
 

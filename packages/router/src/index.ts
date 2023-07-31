@@ -4,18 +4,18 @@
 */
 import EmberRouter from '@ember/routing/router';
 import { buildWaiter } from '@ember/test-waiters';
-import { macroCondition, getGlobalConfig } from '@embroider/macros';
+import { macroCondition, getGlobalConfig } from '@real_ate/fake-embroider-macros';
 
 interface GlobalConfig {
-  '@embroider/core'?: { active: boolean };
+  '@real_ate/fake-embroider-core'?: { active: boolean };
 }
 
 type EngineInfoByRoute = Record<string, { name: string }>;
 
 let Router: typeof EmberRouter;
 
-if (macroCondition(getGlobalConfig<GlobalConfig>()['@embroider/core']?.active ?? false)) {
-  const waiter = buildWaiter('@embroider/router:lazy-route-waiter');
+if (macroCondition(getGlobalConfig<GlobalConfig>()['@real_ate/fake-embroider-core']?.active ?? false)) {
+  const waiter = buildWaiter('@real_ate/fake-embroider-router:lazy-route-waiter');
 
   function embroiderBundles(): {
     _embroiderEngineBundles_?: { names: string[]; loaded?: true; load: () => Promise<void> }[];

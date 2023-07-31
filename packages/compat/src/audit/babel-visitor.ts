@@ -59,7 +59,7 @@ export function auditJS(rawSource: string, filename: string, babelConfig: Transf
     },
     CallExpression(path: NodePath<t.CallExpression>) {
       let callee = path.get('callee');
-      if (callee.referencesImport('@embroider/macros', 'importSync') || t.isImport(callee.node)) {
+      if (callee.referencesImport('@real_ate/fake-embroider-macros', 'importSync') || t.isImport(callee.node)) {
         let arg = path.node.arguments[0];
         if (arg.type === 'StringLiteral') {
           imports.push({

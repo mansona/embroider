@@ -1,6 +1,6 @@
 import { App, Addons as CompatAddons, Options } from '.';
-import { toBroccoliPlugin, PackagerConstructor, Variant, EmberAppInstance } from '@embroider/core';
-import { tmpdir } from '@embroider/core';
+import { toBroccoliPlugin, PackagerConstructor, Variant, EmberAppInstance } from '@real_ate/fake-embroider-core';
+import { tmpdir } from '@real_ate/fake-embroider-core';
 import { Node } from 'broccoli-node-api';
 import writeFile from 'broccoli-file-creator';
 import mergeTrees from 'broccoli-merge-trees';

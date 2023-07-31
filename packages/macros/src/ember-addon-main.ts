@@ -1,4 +1,4 @@
-import { AppInstance } from '@embroider/shared-internals';
+import { AppInstance } from '@real_ate/fake-embroider-shared-internals';
 import { join } from 'path';
 import { BuildPluginParams } from './glimmer/ast-transform';
 import { MacrosConfig, isEmbroiderMacrosPlugin } from './node';
@@ -6,12 +6,13 @@ import { MacrosConfig, isEmbroiderMacrosPlugin } from './node';
 let hasWrappedToTree = false;
 
 export = {
-  name: '@embroider/macros',
+  name: '@real_ate/fake-embroider-macros',
   included(this: any, parent: any) {
     this._super.included.apply(this, arguments);
     this.options.babel = { plugins: [] };
     let parentOptions = (parent.options = parent.options || {});
-    let ownOptions = (parentOptions['@embroider/macros'] = parentOptions['@embroider/macros'] || {});
+    let ownOptions = (parentOptions['@real_ate/fake-embroider-macros'] =
+      parentOptions['@real_ate/fake-embroider-macros'] || {});
 
     let appInstance: AppInstance = this._findHost();
     let macrosConfig = getMacrosConfig(appInstance);
@@ -93,7 +94,7 @@ export = {
       let { plugins, setConfig, lazyParams } = MacrosConfig.astPlugins((this as any).parent.root);
       this.setMacrosConfig = setConfig;
       plugins.forEach((plugin, index) => {
-        let name = `@embroider/macros/${index}`;
+        let name = `@real_ate/fake-embroider-macros/${index}`;
         let baseDir = join(__dirname, '..');
 
         let params: BuildPluginParams = {

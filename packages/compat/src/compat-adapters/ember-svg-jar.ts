@@ -9,7 +9,9 @@ class FixSVGJar extends Plugin {
     let helperFile = join(this.inputPaths[0], '_app_', 'helpers', 'svg-jar.js');
     if (pathExistsSync(helperFile)) {
       let source = readFileSync(helperFile, 'utf8');
-      source = `import { importSync } from '@embroider/macros';\n` + source.replace(/\brequire\b/g, 'importSync');
+      source =
+        `import { importSync } from '@real_ate/fake-embroider-macros';\n` +
+        source.replace(/\brequire\b/g, 'importSync');
       ensureDirSync(join(this.outputPath, '_app_', 'helpers'));
       writeFileSync(join(this.outputPath, '_app_', 'helpers', 'svg-jar.js'), source);
     }

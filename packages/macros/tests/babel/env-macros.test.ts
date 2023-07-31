@@ -1,4 +1,4 @@
-import { allBabelVersions } from '@embroider/test-support';
+import { allBabelVersions } from '@real_ate/fake-embroider-test-support';
 import { makeBabelConfig, allModes, makeRunner } from './helpers';
 import { MacrosConfig } from '../../src/node';
 import { resolve } from 'path';
@@ -17,7 +17,7 @@ describe(`env macros`, function () {
       describe(`true cases`, function () {
         beforeEach(function () {
           macrosConfig = MacrosConfig.for({}, resolve(__dirname, '..', '..'));
-          macrosConfig.setGlobalConfig(__filename, '@embroider/macros', { isTesting: true });
+          macrosConfig.setGlobalConfig(__filename, '@real_ate/fake-embroider-macros', { isTesting: true });
           macrosConfig.enablePackageDevelopment(resolve(__dirname, '..', '..'));
           applyMode(macrosConfig);
           macrosConfig.finalize();
@@ -26,7 +26,7 @@ describe(`env macros`, function () {
 
         test('isDevelopingApp: access value', () => {
           let code = transform(`
-            import { isDevelopingApp } from '@embroider/macros';
+            import { isDevelopingApp } from '@real_ate/fake-embroider-macros';
             export default function() {
               return isDevelopingApp();
             }
@@ -37,7 +37,7 @@ describe(`env macros`, function () {
 
         buildTimeTest('isDevelopingApp: use within conditional', () => {
           let code = transform(`
-            import { isDevelopingApp, macroCondition } from '@embroider/macros';
+            import { isDevelopingApp, macroCondition } from '@real_ate/fake-embroider-macros';
             export default function() {
               if (macroCondition(isDevelopingApp())) {
                 return 'yes';
@@ -53,7 +53,7 @@ describe(`env macros`, function () {
 
         test('isDevelopingThisPackage from within app', () => {
           let code = transform(`
-            import { isDevelopingThisPackage } from '@embroider/macros';
+            import { isDevelopingThisPackage } from '@real_ate/fake-embroider-macros';
             export default function() {
               return isDevelopingThisPackage();
             }
@@ -64,7 +64,7 @@ describe(`env macros`, function () {
 
         buildTimeTest('isTesting: access value', () => {
           let code = transform(`
-            import { isTesting } from '@embroider/macros';
+            import { isTesting } from '@real_ate/fake-embroider-macros';
             export default function() {
               return isTesting();
             }
@@ -75,7 +75,7 @@ describe(`env macros`, function () {
 
         runTimeTest('isTesting: access value', () => {
           let code = transform(`
-            import { isTesting } from '@embroider/macros';
+            import { isTesting } from '@real_ate/fake-embroider-macros';
             export default function() {
               return isTesting();
             }
@@ -86,7 +86,7 @@ describe(`env macros`, function () {
 
         buildTimeTest('isTesting: use within conditional', () => {
           let code = transform(`
-            import { isTesting, macroCondition } from '@embroider/macros';
+            import { isTesting, macroCondition } from '@real_ate/fake-embroider-macros';
             export default function() {
               if (macroCondition(isTesting())) {
                 return 'yes';
@@ -103,7 +103,7 @@ describe(`env macros`, function () {
 
         runTimeTest('isTesting: use within conditional', () => {
           let code = transform(`
-            import { isTesting, macroCondition } from '@embroider/macros';
+            import { isTesting, macroCondition } from '@real_ate/fake-embroider-macros';
             export default function() {
               if (macroCondition(isTesting())) {
                 return 'yes';
@@ -122,7 +122,7 @@ describe(`env macros`, function () {
       describe(`false cases`, function () {
         beforeEach(function () {
           macrosConfig = MacrosConfig.for({}, resolve(__dirname, '..', '..'));
-          macrosConfig.setGlobalConfig(__filename, '@embroider/macros', { isTesting: false });
+          macrosConfig.setGlobalConfig(__filename, '@real_ate/fake-embroider-macros', { isTesting: false });
           applyMode(macrosConfig);
           macrosConfig.finalize();
           run = makeRunner(transform);
@@ -130,7 +130,7 @@ describe(`env macros`, function () {
 
         test('isDevelopingApp: access value', () => {
           let code = transform(`
-            import { isDevelopingApp } from '@embroider/macros';
+            import { isDevelopingApp } from '@real_ate/fake-embroider-macros';
             export default function() {
               return isDevelopingApp();
             }
@@ -140,7 +140,7 @@ describe(`env macros`, function () {
 
         test('isDevelopingApp: use within conditional', () => {
           let code = transform(`
-            import { isDevelopingApp, macroCondition } from '@embroider/macros';
+            import { isDevelopingApp, macroCondition } from '@real_ate/fake-embroider-macros';
             export default function() {
               if (macroCondition(isDevelopingApp())) {
                 return 'yes';
@@ -154,7 +154,7 @@ describe(`env macros`, function () {
 
         test('isTesting: access value', () => {
           let code = transform(`
-            import { isTesting } from '@embroider/macros';
+            import { isTesting } from '@real_ate/fake-embroider-macros';
             export default function() {
               return isTesting();
             }
@@ -164,7 +164,7 @@ describe(`env macros`, function () {
 
         test('isTesting: use within conditional', () => {
           let code = transform(`
-            import { isTesting, macroCondition } from '@embroider/macros';
+            import { isTesting, macroCondition } from '@real_ate/fake-embroider-macros';
             export default function() {
               if (macroCondition(isTesting())) {
                 return 'yes';

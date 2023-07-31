@@ -1,7 +1,7 @@
 /* eslint-env node */
 function sampleTransform(env) {
   return {
-    name: '@embroider/sample-transforms',
+    name: '@real_ate/fake-embroider-sample-transforms',
 
     visitor: {
       MustacheStatement(node) {
