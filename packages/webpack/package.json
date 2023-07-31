@@ -5,7 +5,7 @@
   "description": "Builds EmberJS apps with Webpack",
   "repository": {
     "type": "git",
-    "url": "https://github.com/embroider-build/embroider.git",
+    "url": "https://github.com/mansona/embroider.git",
     "directory": "packages/webpack"
   },
   "license": "MIT",

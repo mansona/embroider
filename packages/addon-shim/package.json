@@ -6,7 +6,7 @@
   "main": "./src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/embroider-build/embroider.git",
+    "url": "https://github.com/mansona/embroider.git",
     "directory": "packages/addon-shim"
   },
   "license": "MIT",

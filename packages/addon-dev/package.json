@@ -4,7 +4,7 @@
   "description": "Utilities for addon authors",
   "repository": {
     "type": "git",
-    "url": "https://github.com/embroider-build/embroider.git",
+    "url": "https://github.com/mansona/embroider.git",
     "directory": "packages/addon-dev"
   },
   "license": "MIT",
