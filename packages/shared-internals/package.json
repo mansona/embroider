@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/shared-internals",
+  "name": "@real_ate/fake-embroider-shared-internals",
   "version": "2.3.0",
   "private": false,
   "description": "Utilities shared among the other embroider packages",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "broccoli-node-api": "^1.7.0",
-    "@embroider/test-support": "workspace:*",
+    "@real_ate/fake-embroider-test-support": "workspace:*",
     "@types/babel__core": "^7.1.14",
     "@types/babel__traverse": "^7.18.5",
     "@types/debug": "^4.1.5",

@@ -5,7 +5,7 @@
     "ember-addon"
   ],
   "dependencies": {
-    "@embroider/addon-shim": "workspace:*"
+    "@real_ate/fake-embroider-addon-shim": "workspace:*"
   },
   "private": true,
   "ember-addon": {

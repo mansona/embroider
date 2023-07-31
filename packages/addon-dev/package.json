@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/addon-dev",
+  "name": "@real_ate/fake-embroider-addon-dev",
   "version": "3.2.0",
   "description": "Utilities for addon authors",
   "repository": {
@@ -26,7 +26,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@embroider/core": "workspace:^",
+    "@real_ate/fake-embroider-core": "workspace:^",
     "@rollup/pluginutils": "^4.1.1",
     "content-tag": "^1.0.0",
     "fs-extra": "^10.0.0",
@@ -37,7 +37,7 @@
     "yargs": "^17.0.1"
   },
   "devDependencies": {
-    "@embroider/test-support": "workspace:*",
+    "@real_ate/fake-embroider-test-support": "workspace:*",
     "@glimmer/syntax": "^0.84.2",
     "@types/fs-extra": "^9.0.12",
     "@types/minimatch": "^3.0.4",

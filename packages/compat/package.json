@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/compat",
+  "name": "@real_ate/fake-embroider-compat",
   "version": "3.2.0",
   "private": false,
   "description": "Backward compatibility layer for the Embroider build system.",
@@ -30,7 +30,7 @@
     "@babel/preset-env": "^7.14.5",
     "@babel/runtime": "^7.18.6",
     "@babel/traverse": "^7.14.5",
-    "@embroider/macros": "workspace:*",
+    "@real_ate/fake-embroider-macros": "workspace:*",
     "@types/babel__code-frame": "^7.0.2",
     "@types/yargs": "^17.0.3",
     "assert-never": "^1.1.0",
@@ -66,9 +66,9 @@
     "yargs": "^17.0.1"
   },
   "devDependencies": {
-    "@embroider/core": "workspace:^",
-    "@embroider/sample-transforms": "workspace:*",
-    "@embroider/test-support": "workspace:*",
+    "@real_ate/fake-embroider-core": "workspace:^",
+    "@real_ate/fake-embroider-sample-transforms": "workspace:*",
+    "@real_ate/fake-embroider-test-support": "workspace:*",
     "@glimmer/syntax": "^0.84.3",
     "@glint/template": "^1.0.0",
     "@types/babel__core": "^7.1.14",
@@ -91,7 +91,7 @@
     "typescript": "^5.1.6"
   },
   "peerDependencies": {
-    "@embroider/core": "workspace:^"
+    "@real_ate/fake-embroider-core": "workspace:^"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"

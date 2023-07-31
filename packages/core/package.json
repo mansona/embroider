@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/core",
+  "name": "@real_ate/fake-embroider-core",
   "version": "3.2.0",
   "private": false,
   "description": "A build system for EmberJS applications.",
@@ -23,8 +23,8 @@
     "@babel/core": "^7.14.5",
     "@babel/parser": "^7.14.5",
     "@babel/traverse": "^7.14.5",
-    "@embroider/macros": "workspace:*",
-    "@embroider/shared-internals": "workspace:*",
+    "@real_ate/fake-embroider-macros": "workspace:*",
+    "@real_ate/fake-embroider-shared-internals": "workspace:*",
     "assert-never": "^1.2.1",
     "babel-plugin-ember-template-compilation": "^2.1.1",
     "broccoli-node-api": "^1.7.0",
@@ -46,8 +46,8 @@
     "walk-sync": "^3.0.0"
   },
   "devDependencies": {
-    "@embroider/sample-transforms": "workspace:*",
-    "@embroider/test-support": "workspace:*",
+    "@real_ate/fake-embroider-sample-transforms": "workspace:*",
+    "@real_ate/fake-embroider-test-support": "workspace:*",
     "@glimmer/syntax": "^0.84.2",
     "@glint/template": "^1.0.0",
     "@types/babel__core": "^7.1.14",

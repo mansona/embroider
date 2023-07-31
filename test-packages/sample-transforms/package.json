@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/sample-transforms",
+  "name": "@real_ate/fake-embroider-sample-transforms",
   "version": "0.0.0",
   "description": "An addon we use in our test suite.",
   "keywords": [
@@ -27,7 +27,7 @@
     "@ember/optional-features": "^0.7.0",
     "@ember/string": "^3.1.1",
     "@ember/test-helpers": "^2.9.1",
-    "@embroider/test-support": "workspace:*",
+    "@real_ate/fake-embroider-test-support": "workspace:*",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.2.0",
     "ember-cli": "~3.28.0",

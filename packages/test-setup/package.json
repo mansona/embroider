@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/test-setup",
+  "name": "@real_ate/fake-embroider-test-setup",
   "version": "3.0.1",
   "repository": {
     "type": "git",
@@ -16,24 +16,24 @@
     "resolve": "^1.20.0"
   },
   "devDependencies": {
-    "@embroider/compat": "workspace:^",
-    "@embroider/core": "workspace:^",
-    "@embroider/webpack": "workspace:^",
+    "@real_ate/fake-embroider-compat": "workspace:^",
+    "@real_ate/fake-embroider-core": "workspace:^",
+    "@real_ate/fake-embroider-webpack": "workspace:^",
     "@types/lodash": "^4.14.170"
   },
   "peerDependencies": {
-    "@embroider/compat": "workspace:^",
-    "@embroider/core": "workspace:^",
-    "@embroider/webpack": "workspace:^"
+    "@real_ate/fake-embroider-compat": "workspace:^",
+    "@real_ate/fake-embroider-core": "workspace:^",
+    "@real_ate/fake-embroider-webpack": "workspace:^"
   },
   "peerDependenciesMeta": {
-    "@embroider/compat": {
+    "@real_ate/fake-embroider-compat": {
       "optional": true
     },
-    "@embroider/core": {
+    "@real_ate/fake-embroider-core": {
       "optional": true
     },
-    "@embroider/webpack": {
+    "@real_ate/fake-embroider-webpack": {
       "optional": true
     }
   },

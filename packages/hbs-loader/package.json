@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/hbs-loader",
+  "name": "@real_ate/fake-embroider-hbs-loader",
   "version": "3.0.2",
   "private": false,
   "description": "Glimmer handlebars loader for webpack",
@@ -19,13 +19,13 @@
   "scripts": {},
   "dependencies": {},
   "devDependencies": {
-    "@embroider/core": "workspace:^",
+    "@real_ate/fake-embroider-core": "workspace:^",
     "@types/node": "^15.12.2",
     "typescript": "^5.1.6",
     "webpack": "^5"
   },
   "peerDependencies": {
-    "@embroider/core": "workspace:^",
+    "@real_ate/fake-embroider-core": "workspace:^",
     "webpack": "^5"
   },
   "engines": {

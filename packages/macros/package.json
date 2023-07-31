@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/macros",
+  "name": "@real_ate/fake-embroider-macros",
   "version": "1.13.0",
   "private": false,
   "description": "Standardized build-time macros for ember apps.",
@@ -23,7 +23,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@embroider/shared-internals": "workspace:*",
+    "@real_ate/fake-embroider-shared-internals": "workspace:*",
     "assert-never": "^1.2.1",
     "babel-import-util": "^2.0.0",
     "ember-cli-babel": "^7.26.6",
@@ -36,8 +36,8 @@
     "@babel/core": "^7.14.5",
     "@babel/plugin-transform-modules-amd": "^7.19.6",
     "@babel/traverse": "^7.14.5",
-    "@embroider/core": "workspace:*",
-    "@embroider/test-support": "workspace:*",
+    "@real_ate/fake-embroider-core": "workspace:*",
+    "@real_ate/fake-embroider-test-support": "workspace:*",
     "@glint/template": "^1.0.0",
     "@types/babel__core": "^7.1.14",
     "@types/babel__generator": "^7.6.2",

@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/addon-shim",
+  "name": "@real_ate/fake-embroider-addon-shim",
   "version": "1.8.6",
   "description": "Make v2 addons work in non-Embroider apps.",
   "keywords": [],
@@ -17,7 +17,7 @@
   },
   "scripts": {},
   "dependencies": {
-    "@embroider/shared-internals": "workspace:^",
+    "@real_ate/fake-embroider-shared-internals": "workspace:^",
     "broccoli-funnel": "^3.0.8",
     "semver": "^7.3.8"
   },

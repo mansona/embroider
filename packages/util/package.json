@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/util",
+  "name": "@real_ate/fake-embroider-util",
   "version": "1.12.0",
   "description": "Utilities for app and addon authors.",
   "keywords": [
@@ -27,7 +27,7 @@
     "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
-    "@embroider/macros": "workspace:^",
+    "@real_ate/fake-embroider-macros": "workspace:^",
     "broccoli-funnel": "^3.0.5",
     "ember-cli-babel": "^7.26.11"
   },
@@ -50,11 +50,11 @@
     "@ember/optional-features": "^2.0.0",
     "@ember/string": "^3.1.1",
     "@ember/test-helpers": "^2.9.1",
-    "@embroider/compat": "workspace:*",
-    "@embroider/core": "workspace:*",
-    "@embroider/test-setup": "workspace:*",
-    "@embroider/test-support": "workspace:*",
-    "@embroider/webpack": "workspace:*",
+    "@real_ate/fake-embroider-compat": "workspace:*",
+    "@real_ate/fake-embroider-core": "workspace:*",
+    "@real_ate/fake-embroider-test-setup": "workspace:*",
+    "@real_ate/fake-embroider-test-support": "workspace:*",
+    "@real_ate/fake-embroider-webpack": "workspace:*",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@glint/template": "^1.0.0",

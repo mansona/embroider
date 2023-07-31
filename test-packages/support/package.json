@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/test-support",
+  "name": "@real_ate/fake-embroider-test-support",
   "version": "0.36.0",
   "private": true,
   "dependencies": {

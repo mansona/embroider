@@ -1,5 +1,5 @@
 {
-  "name": "@embroider/router",
+  "name": "@real_ate/fake-embroider-router",
   "version": "2.1.3",
   "description": "Lazy loading router",
   "keywords": [
@@ -31,13 +31,13 @@
   },
   "dependencies": {
     "@ember/test-waiters": "^3.0.2",
-    "@embroider/addon-shim": "workspace:^"
+    "@real_ate/fake-embroider-addon-shim": "workspace:^"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
     "@babel/plugin-transform-typescript": "^7.8.7",
-    "@embroider/addon-dev": "workspace:^",
-    "@embroider/macros": "workspace:*",
+    "@real_ate/fake-embroider-addon-dev": "workspace:^",
+    "@real_ate/fake-embroider-macros": "workspace:*",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-typescript": "^11.1.2",
     "@tsconfig/ember": "^1.0.0",
@@ -57,10 +57,10 @@
     "typescript": "^5.1.6"
   },
   "peerDependencies": {
-    "@embroider/core": "workspace:^2.0.0||^3.0.0"
+    "@real_ate/fake-embroider-core": "workspace:^2.0.0||^3.0.0"
   },
   "peerDependenciesMeta": {
-    "@embroider/core": {
+    "@real_ate/fake-embroider-core": {
       "optional": true
     }
   },
