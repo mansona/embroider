@@ -43,7 +43,6 @@
       ],
       "pkgJSONPath": "packages/compat/package.json"
     },
-
     "@real_ate/fake-embroider-core": {
       "impact": "minor",
       "oldVersion": "3.1.3",
